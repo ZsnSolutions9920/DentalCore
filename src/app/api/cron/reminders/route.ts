@@ -1,0 +1,181 @@
+/**
+ * @system DentaCore ERP — Reminder Generation
+ * @route POST /api/cron/reminders — Generate notifications for upcoming events
+ * Call this periodically (e.g., every hour via cron job or external trigger)
+ */
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+
+import { toClinicDay } from "@/lib/utils";
+import { logger } from "@/lib/logger";
+export async function POST() {
+  try {
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowStr = toClinicDay(tomorrow);
+    const todayStr = toClinicDay(now);
+
+    let created = 0;
+
+    // 1. Appointment reminders (24h before)
+    const upcomingAppts = await prisma.appointment.findMany({
+      where: {
+        date: new Date(tomorrowStr),
+        status: { in: ["SCHEDULED", "CONFIRMED"] },
+      },
+      include: {
+        patient: { select: { firstName: true, lastName: true } },
+        doctor: { select: { id: true, name: true } },
+      },
+    });
+
+    for (const appt of upcomingAppts) {
+      // Notify doctor
+      const existing = await prisma.notification.findFirst({
+        where: {
+          userId: appt.doctorId,
+          title: { contains: appt.appointmentCode },
+          createdAt: { gte: new Date(todayStr) },
+        },
+      });
+      if (!existing) {
+        await prisma.notification.create({
+          data: {
+            userId: appt.doctorId,
+            title: `Tomorrow: ${appt.patient.firstName} ${appt.patient.lastName}`,
+            message: `${appt.type.replace("_", " ")} at ${appt.startTime} — ${appt.appointmentCode}`,
+            type: "APPOINTMENT",
+            link: `/calendar`,
+          },
+        });
+        created++;
+      }
+    }
+
+    // 2. Overdue follow-up reminders
+    const overdueFollowUps = await prisma.followUp.findMany({
+      where: {
+        status: "PENDING",
+        dueDate: { lt: now },
+      },
+      include: {
+        patient: { select: { firstName: true, lastName: true } },
+        doctor: { select: { id: true } },
+      },
+    });
+
+    for (const fu of overdueFollowUps) {
+      const existing = await prisma.notification.findFirst({
+        where: {
+          userId: fu.doctorId,
+          title: { contains: "Follow-up overdue" },
+          message: { contains: `${fu.patient.firstName}` },
+          createdAt: { gte: new Date(todayStr) },
+        },
+      });
+      if (!existing) {
+        await prisma.notification.create({
+          data: {
+            userId: fu.doctorId,
+            title: `Follow-up overdue: ${fu.patient.firstName} ${fu.patient.lastName}`,
+            message: `${fu.reason} — was due ${toClinicDay(fu.dueDate)}`,
+            type: "FOLLOW_UP",
+            link: `/follow-ups`,
+          },
+        });
+        created++;
+      }
+    }
+
+    // 3. Package expiry reminders (expiring in 7 days)
+    const expiryDate = new Date(now);
+    expiryDate.setDate(expiryDate.getDate() + 7);
+    const expiringPackages = await prisma.patientPackage.findMany({
+      where: {
+        status: "ACTIVE",
+        expiryDate: { lte: expiryDate, gte: now },
+      },
+      include: {
+        patient: { select: { firstName: true, lastName: true, assignedDoctorId: true } },
+      },
+    });
+
+    for (const pkg of expiringPackages) {
+      if (pkg.patient.assignedDoctorId) {
+        const existing = await prisma.notification.findFirst({
+          where: {
+            userId: pkg.patient.assignedDoctorId,
+            title: { contains: "Package expiring" },
+            createdAt: { gte: new Date(todayStr) },
+          },
+        });
+        if (!existing) {
+          await prisma.notification.create({
+            data: {
+              userId: pkg.patient.assignedDoctorId,
+              title: `Package expiring: ${pkg.patient.firstName} ${pkg.patient.lastName}`,
+              message: `Expires on ${toClinicDay(pkg.expiryDate)}`,
+              type: "SYSTEM",
+              link: `/patients`,
+            },
+          });
+          created++;
+        }
+      }
+    }
+
+    // 4. Overdue invoice reminders
+    const overdueInvoices = await prisma.invoice.findMany({
+      where: {
+        status: { in: ["PENDING", "PARTIAL"] },
+        dueDate: { lt: now },
+      },
+      include: {
+        patient: { select: { firstName: true, lastName: true } },
+        createdBy: { select: { id: true } },
+      },
+    });
+
+    for (const inv of overdueInvoices) {
+      const existing = await prisma.notification.findFirst({
+        where: {
+          userId: inv.createdById,
+          title: { contains: inv.invoiceNumber },
+          createdAt: { gte: new Date(todayStr) },
+        },
+      });
+      if (!existing) {
+        await prisma.notification.create({
+          data: {
+            userId: inv.createdById,
+            title: `Invoice overdue: ${inv.invoiceNumber}`,
+            message: `${inv.patient.firstName} ${inv.patient.lastName} — Rs ${Number(inv.balanceDue).toLocaleString()} due`,
+            type: "BILLING",
+            link: `/billing`,
+          },
+        });
+        created++;
+
+        // Also update invoice status to OVERDUE
+        if (inv.status !== "OVERDUE") {
+          await prisma.invoice.update({ where: { id: inv.id }, data: { status: "OVERDUE" } });
+        }
+      }
+    }
+
+    return NextResponse.json({
+      success: true,
+      data: {
+        remindersCreated: created,
+        appointmentReminders: upcomingAppts.length,
+        overdueFollowUps: overdueFollowUps.length,
+        expiringPackages: expiringPackages.length,
+        overdueInvoices: overdueInvoices.length,
+      },
+    });
+  } catch (error) {
+    logger.api("POST", "/api/cron/reminders", error);
+    return NextResponse.json({ success: false, error: "Failed to generate reminders" }, { status: 500 });
+  }
+}
