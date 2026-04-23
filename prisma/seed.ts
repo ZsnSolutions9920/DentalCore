@@ -17,41 +17,51 @@ function toDate(s?: string | null): Date | null {
   return isNaN(d.getTime()) ? null : d;
 }
 
+async function safeDelete(label: string, fn: () => Promise<unknown>) {
+  try { await fn(); }
+  catch (e: unknown) {
+    const code = (e as { code?: string }).code;
+    // P2021 = table does not exist — fine on first run
+    if (code !== "P2021") throw e;
+    console.log(`  (skip clear ${label}: table missing — first run)`);
+  }
+}
+
 async function main() {
   console.log("Seeding DentaCore...");
 
-  // Clear
-  await prisma.auditLog.deleteMany();
-  await prisma.notification.deleteMany();
-  await prisma.aITranscription.deleteMany();
-  await prisma.communicationLog.deleteMany();
-  await prisma.callLog.deleteMany();
-  await prisma.patientPackage.deleteMany();
-  await prisma.packageTreatment.deleteMany();
-  await prisma.package.deleteMany();
-  await prisma.payment.deleteMany();
-  await prisma.refund.deleteMany();
-  await prisma.invoiceItem.deleteMany();
-  await prisma.invoice.deleteMany();
-  await prisma.prescriptionItem.deleteMany();
-  await prisma.prescription.deleteMany();
-  await prisma.procedure.deleteMany();
-  await prisma.labTest.deleteMany();
-  await prisma.patientDocument.deleteMany();
-  await prisma.followUp.deleteMany();
-  await prisma.triage.deleteMany();
-  await prisma.consultationNote.deleteMany();
-  await prisma.appointment.deleteMany();
-  await prisma.skinHistory.deleteMany();
-  await prisma.medicalHistory.deleteMany();
-  await prisma.allergy.deleteMany();
-  await prisma.patientTag.deleteMany();
-  await prisma.patient.deleteMany();
-  await prisma.treatment.deleteMany();
-  await prisma.room.deleteMany();
-  await prisma.lead.deleteMany();
-  await prisma.user.deleteMany();
-  await prisma.branch.deleteMany();
+  // Clear (order matters — children before parents)
+  await safeDelete("auditLog", () => prisma.auditLog.deleteMany());
+  await safeDelete("notification", () => prisma.notification.deleteMany());
+  await safeDelete("aITranscription", () => prisma.aITranscription.deleteMany());
+  await safeDelete("communicationLog", () => prisma.communicationLog.deleteMany());
+  await safeDelete("callLog", () => prisma.callLog.deleteMany());
+  await safeDelete("patientPackage", () => prisma.patientPackage.deleteMany());
+  await safeDelete("packageTreatment", () => prisma.packageTreatment.deleteMany());
+  await safeDelete("package", () => prisma.package.deleteMany());
+  await safeDelete("payment", () => prisma.payment.deleteMany());
+  await safeDelete("refund", () => prisma.refund.deleteMany());
+  await safeDelete("invoiceItem", () => prisma.invoiceItem.deleteMany());
+  await safeDelete("invoice", () => prisma.invoice.deleteMany());
+  await safeDelete("prescriptionItem", () => prisma.prescriptionItem.deleteMany());
+  await safeDelete("prescription", () => prisma.prescription.deleteMany());
+  await safeDelete("procedure", () => prisma.procedure.deleteMany());
+  await safeDelete("labTest", () => prisma.labTest.deleteMany());
+  await safeDelete("patientDocument", () => prisma.patientDocument.deleteMany());
+  await safeDelete("followUp", () => prisma.followUp.deleteMany());
+  await safeDelete("triage", () => prisma.triage.deleteMany());
+  await safeDelete("consultationNote", () => prisma.consultationNote.deleteMany());
+  await safeDelete("appointment", () => prisma.appointment.deleteMany());
+  await safeDelete("skinHistory", () => prisma.skinHistory.deleteMany());
+  await safeDelete("medicalHistory", () => prisma.medicalHistory.deleteMany());
+  await safeDelete("allergy", () => prisma.allergy.deleteMany());
+  await safeDelete("patientTag", () => prisma.patientTag.deleteMany());
+  await safeDelete("patient", () => prisma.patient.deleteMany());
+  await safeDelete("treatment", () => prisma.treatment.deleteMany());
+  await safeDelete("room", () => prisma.room.deleteMany());
+  await safeDelete("lead", () => prisma.lead.deleteMany());
+  await safeDelete("user", () => prisma.user.deleteMany());
+  await safeDelete("branch", () => prisma.branch.deleteMany());
 
   for (const b of mockBranches) {
     await prisma.branch.create({ data: { id: b.id, name: b.name, address: b.address, phone: b.phone, email: b.email, isActive: b.isActive } });

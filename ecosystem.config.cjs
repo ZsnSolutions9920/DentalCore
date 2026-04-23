@@ -6,8 +6,8 @@ module.exports = {
       name: "dentacore",
       script: "node_modules/next/dist/bin/next",
       args: "start -p 9000",
-      instances: 2,                // keep small — shared VPS with other PM2 apps
-      exec_mode: "cluster",        // rolling zero-downtime reload
+      instances: 1,                // single worker — shared VPS
+      exec_mode: "fork",           // simpler; switch to "cluster" + instances>1 for scale
       max_memory_restart: "1G",
       env: {
         NODE_ENV: "production",
