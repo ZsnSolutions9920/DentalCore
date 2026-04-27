@@ -72,8 +72,8 @@ export default function SchedulesPage() {
     <div className="space-y-4 sm:space-y-6 animate-fade-in" data-id="ADMIN-SCHEDULES">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center">
-          <Calendar className="w-5 h-5 text-teal-600" />
+        <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+          <Calendar className="w-5 h-5 text-blue-600" />
         </div>
         <div>
           <h1 className="text-xl sm:text-2xl font-semibold text-stone-900">Schedules</h1>
@@ -107,15 +107,15 @@ export default function SchedulesPage() {
                         key={day}
                         className={`rounded-2xl p-3 text-center transition-all ${
                           slot
-                            ? "bg-teal-50 border border-teal-100"
+                            ? "bg-blue-50 border border-blue-100"
                             : "bg-stone-50 border border-stone-100"
                         }`}
                       >
-                        <p className={`text-xs font-semibold mb-1 ${slot ? "text-teal-700" : "text-stone-400"}`}>
+                        <p className={`text-xs font-semibold mb-1 ${slot ? "text-blue-700" : "text-stone-400"}`}>
                           {day}
                         </p>
                         {slot ? (
-                          <div className="flex items-center justify-center gap-1 text-xs text-teal-600">
+                          <div className="flex items-center justify-center gap-1 text-xs text-blue-600">
                             <Clock className="w-3 h-3" />
                             <span>{slot.start}-{slot.end}</span>
                           </div>

@@ -71,7 +71,7 @@ export async function GET(
 <body>
   <div style="max-width:800px;margin:0 auto;padding:32px 40px;">
     <!-- Header -->
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #0d9488;padding-bottom:16px;margin-bottom:24px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #2563eb;padding-bottom:16px;margin-bottom:24px;">
       <div>
         <h1 style="margin:0;font-size:24px;color:#0284c7;font-weight:700;">DentaCore</h1>
         <p style="margin:4px 0 0;font-size:13px;color:#64748b;">Dental Clinic</p>
@@ -100,7 +100,7 @@ export async function GET(
 
     <!-- Rx Symbol -->
     <div style="margin-bottom:16px;">
-      <span style="font-size:28px;font-weight:700;color:#0d9488;font-family:serif;">&#8478;</span>
+      <span style="font-size:28px;font-weight:700;color:#2563eb;font-family:serif;">&#8478;</span>
     </div>
 
     <!-- Medications Table -->
@@ -142,7 +142,7 @@ export async function GET(
 
     <!-- Print Button -->
     <div class="no-print" style="text-align:center;margin-top:24px;">
-      <button onclick="window.print()" style="background:#0d9488;color:white;border:none;padding:12px 32px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;">
+      <button onclick="window.print()" style="background:#2563eb;color:white;border:none;padding:12px 32px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;">
         Print Prescription
       </button>
     </div>

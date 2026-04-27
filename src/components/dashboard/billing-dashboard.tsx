@@ -14,7 +14,7 @@ import { useAuth } from "@/lib/auth-context";
 
 const paymentMethods = [
   { method: "Cash", amount: 0, icon: <Banknote className="w-6 h-6" />, bg: "bg-emerald-50", text: "text-emerald-600" },
-  { method: "Card", amount: 0, icon: <CreditCard className="w-6 h-6" />, bg: "bg-teal-50", text: "text-teal-600" },
+  { method: "Card", amount: 0, icon: <CreditCard className="w-6 h-6" />, bg: "bg-blue-50", text: "text-blue-600" },
   { method: "Insurance", amount: 0, icon: <Building2 className="w-6 h-6" />, bg: "bg-sky-50", text: "text-sky-600" },
   { method: "Package", amount: 0, icon: <ShoppingBag className="w-6 h-6" />, bg: "bg-amber-50", text: "text-amber-600" },
 ];
@@ -48,12 +48,12 @@ export function BillingDashboard() {
   return (
     <div className="space-y-4 sm:space-y-6 animate-fade-in" data-id="DASH-BILLING">
       {/* Welcome Card */}
-      <div className="bg-gradient-to-r from-teal-600 to-teal-500 rounded-2xl p-4 sm:p-6 text-white shadow-sm">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-4 sm:p-6 text-white shadow-sm">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-teal-100 text-sm">Billing</p>
+            <p className="text-blue-100 text-sm">Billing</p>
             <h1 className="text-lg sm:text-xl font-semibold">{greeting}, {user?.name || "there"}</h1>
-            <p className="text-teal-100 mt-1 text-sm">{todayLabel} &mdash; Here&apos;s your billing overview.</p>
+            <p className="text-blue-100 mt-1 text-sm">{todayLabel} &mdash; Here&apos;s your billing overview.</p>
           </div>
           <Button data-id="BILL-CREATE" className="bg-white/20 hover:bg-white/30 text-white rounded-xl backdrop-blur-sm">
             <Receipt className="w-4 h-4 mr-2" />
@@ -113,7 +113,7 @@ export function BillingDashboard() {
                   <Button
                     size="sm"
                     data-id="BILL-PAYMENT"
-                    className="bg-teal-600 hover:bg-teal-700 text-white rounded-xl px-5 font-medium"
+                    className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-5 font-medium"
                   >
                     PAY
                   </Button>
@@ -146,18 +146,6 @@ export function BillingDashboard() {
         </div>
       </div>
 
-      {/* Live Billing Activity */}
-      {billingActivities.length > 0 && (
-        <div className="space-y-2">
-          <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Live Activity</p>
-          {billingActivities.slice(0, 5).map((act) => (
-            <div key={act.id} className="flex items-start gap-2 text-sm text-stone-600 py-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 shrink-0" />
-              <span>{act.message}</span>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

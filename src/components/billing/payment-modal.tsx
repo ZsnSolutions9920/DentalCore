@@ -192,7 +192,7 @@ export function PaymentModal({ isOpen, onClose, invoice }: PaymentModalProps) {
                   className={cn(
                     "flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all cursor-pointer",
                     method === pm.id
-                      ? "border-teal-500 bg-teal-50/50 text-teal-600"
+                      ? "border-blue-500 bg-blue-50/50 text-blue-600"
                       : "border-stone-200 bg-white text-stone-500 hover:border-stone-300"
                   )}
                 >

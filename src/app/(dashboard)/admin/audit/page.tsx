@@ -32,7 +32,7 @@ const actionColors: Record<string, string> = {
   CREATE: "bg-emerald-100 text-emerald-600",
   UPDATE: "bg-sky-100 text-sky-600",
   DELETE: "bg-red-100 text-red-600",
-  LOGIN: "bg-teal-100 text-teal-600",
+  LOGIN: "bg-blue-100 text-blue-600",
 };
 
 const actionBadge: Record<string, "success" | "info" | "danger" | "primary"> = {
@@ -75,8 +75,8 @@ export default function AuditLogPage() {
     <div className="space-y-4 sm:space-y-6 animate-fade-in" data-id="AUTH-AUDIT-LOG">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center">
-          <FileText className="w-5 h-5 text-teal-600" />
+        <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+          <FileText className="w-5 h-5 text-blue-600" />
         </div>
         <div>
           <h1 className="text-xl sm:text-2xl font-semibold text-stone-900">Audit Log</h1>

@@ -100,7 +100,7 @@ export default function TreatmentsPage() {
             onClick={() => setActiveTab(tab.value)}
             className={`px-4 py-2 text-sm font-medium rounded-full transition-all cursor-pointer ${
               activeTab === tab.value
-                ? "bg-teal-600 text-white shadow-sm"
+                ? "bg-blue-600 text-white shadow-sm"
                 : "bg-stone-100 text-stone-600 hover:bg-stone-200"
             }`}
           >
@@ -120,8 +120,8 @@ export default function TreatmentsPage() {
               {/* Top row */}
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center">
-                    <Sparkles className="w-5 h-5 text-teal-600" />
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
                     <p className="font-semibold text-stone-800 truncate min-w-0">{treatment.name}</p>
@@ -147,7 +147,7 @@ export default function TreatmentsPage() {
                   <span>{treatment.duration} min</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-sm font-semibold text-stone-700">
-                  <DollarSign className="w-4 h-4 text-teal-600" />
+                  <DollarSign className="w-4 h-4 text-blue-600" />
                   <span>{formatCurrency(treatment.basePrice)}</span>
                 </div>
               </div>

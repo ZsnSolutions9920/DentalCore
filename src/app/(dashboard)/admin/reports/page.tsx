@@ -57,7 +57,7 @@ export default function ReportsPage() {
       {isLoading ? <div className="flex items-center justify-center py-20"><LoadingSpinner size="lg" /></div> : (
         <>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
-            <KPI icon={<Users className="w-5 h-5" />} label="Total Patients" value={overview.totalPatients || 0} color="text-teal-600" bg="bg-teal-50" />
+            <KPI icon={<Users className="w-5 h-5" />} label="Total Patients" value={overview.totalPatients || 0} color="text-blue-600" bg="bg-blue-50" />
             <KPI icon={<UserPlus className="w-5 h-5" />} label="New Patients" value={overview.newPatients || 0} color="text-emerald-600" bg="bg-emerald-50" />
             <KPI icon={<Calendar className="w-5 h-5" />} label="Appointments" value={overview.totalAppointments || 0} color="text-blue-600" bg="bg-blue-50" />
             <KPI icon={<CheckCircle className="w-5 h-5" />} label="Completion" value={`${overview.completionRate || 0}%`} color="text-emerald-600" bg="bg-emerald-50" />
@@ -86,14 +86,14 @@ export default function ReportsPage() {
 
             <Card><CardHeader><div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-blue-500" /><span className="text-sm font-semibold text-stone-900">Appointments by Status</span></div></CardHeader>
               <CardContent className="p-4 pt-0"><div className="grid grid-cols-2 gap-2">{(appointments.byStatus || []).map((s) => {
-                const colors: Record<string, string> = { COMPLETED: "bg-emerald-50 text-emerald-700 border-emerald-200", SCHEDULED: "bg-blue-50 text-blue-700 border-blue-200", CANCELLED: "bg-red-50 text-red-700 border-red-200", NO_SHOW: "bg-amber-50 text-amber-700 border-amber-200", CHECKED_IN: "bg-teal-50 text-teal-700 border-teal-200", IN_PROGRESS: "bg-violet-50 text-violet-700 border-violet-200", WAITING: "bg-amber-50 text-amber-700 border-amber-200", CONFIRMED: "bg-sky-50 text-sky-700 border-sky-200" };
+                const colors: Record<string, string> = { COMPLETED: "bg-emerald-50 text-emerald-700 border-emerald-200", SCHEDULED: "bg-blue-50 text-blue-700 border-blue-200", CANCELLED: "bg-red-50 text-red-700 border-red-200", NO_SHOW: "bg-amber-50 text-amber-700 border-amber-200", CHECKED_IN: "bg-blue-50 text-blue-700 border-blue-200", IN_PROGRESS: "bg-violet-50 text-violet-700 border-violet-200", WAITING: "bg-amber-50 text-amber-700 border-amber-200", CONFIRMED: "bg-sky-50 text-sky-700 border-sky-200" };
                 return <div key={s.status} className={`rounded-xl border p-3 ${colors[s.status] || "bg-stone-50 text-stone-700 border-stone-200"}`}><p className="text-lg font-bold">{s.count}</p><p className="text-[10px] font-medium uppercase tracking-wider">{s.status.replace(/_/g, " ")}</p></div>;
               })}</div></CardContent></Card>
 
-            <Card><CardHeader><div className="flex items-center gap-2"><Users className="w-4 h-4 text-teal-500" /><span className="text-sm font-semibold text-stone-900">Doctor Utilization</span></div></CardHeader>
+            <Card><CardHeader><div className="flex items-center gap-2"><Users className="w-4 h-4 text-blue-500" /><span className="text-sm font-semibold text-stone-900">Doctor Utilization</span></div></CardHeader>
               <CardContent className="p-4 pt-0">{(appointments.byDoctor || []).length > 0 ? <div className="space-y-2">{(appointments.byDoctor || []).sort((a, b) => b.count - a.count).map((d) => {
                 const max = Math.max(...(appointments.byDoctor || []).map((x) => x.count), 1);
-                return <div key={d.doctor} className="flex items-center gap-2 text-xs"><span className="w-28 text-stone-600 font-medium truncate">{d.doctor}</span><div className="flex-1 h-4 bg-stone-100 rounded-full overflow-hidden"><div className="h-full bg-teal-400 rounded-full" style={{ width: `${Math.round((d.count / max) * 100)}%` }} /></div><span className="w-8 text-right font-bold text-stone-900">{d.count}</span></div>;
+                return <div key={d.doctor} className="flex items-center gap-2 text-xs"><span className="w-28 text-stone-600 font-medium truncate">{d.doctor}</span><div className="flex-1 h-4 bg-stone-100 rounded-full overflow-hidden"><div className="h-full bg-blue-400 rounded-full" style={{ width: `${Math.round((d.count / max) * 100)}%` }} /></div><span className="w-8 text-right font-bold text-stone-900">{d.count}</span></div>;
               })}</div> : <p className="text-sm text-stone-400 py-4 text-center">No data</p>}</CardContent></Card>
 
             <Card><CardHeader><div className="flex items-center gap-2"><CalendarClock className="w-4 h-4 text-amber-500" /><span className="text-sm font-semibold text-stone-900">Follow-Ups</span></div></CardHeader>

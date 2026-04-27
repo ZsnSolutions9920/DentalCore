@@ -58,7 +58,7 @@ export function Topbar() {
           <Sun className="w-4 h-4 text-amber-500" />
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-medium text-stone-800 truncate">{greeting}, <span className="text-teal-700">{displayName}</span></p>
+          <p className="text-sm font-medium text-stone-800 truncate">{greeting}, <span className="text-blue-700">{displayName}</span></p>
           <p className="text-xs text-stone-400 hidden lg:block">Here&apos;s your clinic overview today</p>
         </div>
       </div>
@@ -94,7 +94,7 @@ export function Topbar() {
                   <div className="flex items-center gap-2">
                     {unreadCount > 0 && (
                       <button
-                        className="flex items-center gap-1 text-xs text-teal-600 hover:text-teal-700 cursor-pointer font-medium"
+                        className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 cursor-pointer font-medium"
                         onClick={() => {
                           const unreadIds = notifications.filter((n) => !n.isRead).map((n) => n.id);
                           markRead.mutate(unreadIds, {
@@ -113,7 +113,7 @@ export function Topbar() {
                   {notifications.slice(0, 6).map((notif) => (
                     <div
                       key={notif.id}
-                      className={`px-4 py-3 border-b border-stone-50 hover:bg-stone-50 cursor-pointer transition-colors ${!notif.isRead ? "bg-teal-50/30" : ""}`}
+                      className={`px-4 py-3 border-b border-stone-50 hover:bg-stone-50 cursor-pointer transition-colors ${!notif.isRead ? "bg-blue-50/30" : ""}`}
                       onClick={() => {
                         if (!notif.isRead) {
                           markRead.mutate([notif.id], {
@@ -123,7 +123,7 @@ export function Topbar() {
                       }}
                     >
                       <div className="flex items-start gap-2.5">
-                        {!notif.isRead && <span className="w-2 h-2 rounded-full bg-teal-500 mt-1.5 shrink-0" />}
+                        {!notif.isRead && <span className="w-2 h-2 rounded-full bg-blue-500 mt-1.5 shrink-0" />}
                         <div className="min-w-0">
                           <p className="text-sm font-medium text-stone-800 truncate">{notif.title}</p>
                           <p className="text-xs text-stone-500 mt-0.5 line-clamp-2">{notif.message}</p>
@@ -204,7 +204,7 @@ export function Topbar() {
                 <div className="p-2">
                   <p className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider px-2 py-1">Quick Navigation</p>
                   {[
-                    { label: "Patients", href: "/patients", icon: <Users className="w-4 h-4 text-teal-500" /> },
+                    { label: "Patients", href: "/patients", icon: <Users className="w-4 h-4 text-blue-500" /> },
                     { label: "Appointments", href: "/appointments", icon: <Calendar className="w-4 h-4 text-blue-500" /> },
                     { label: "Calendar", href: "/calendar", icon: <Calendar className="w-4 h-4 text-violet-500" /> },
                     { label: "Consultation", href: "/consultation", icon: <Stethoscope className="w-4 h-4 text-emerald-500" /> },

@@ -24,8 +24,6 @@ export async function GET(
       where: { id },
       include: {
         allergies: true,
-        medications: true,
-        insurance: true,
         assignedDoctor: {
           select: { id: true, name: true, speciality: true, avatar: true },
         },

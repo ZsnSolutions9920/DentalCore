@@ -229,7 +229,7 @@ export function EditPatientModal({ isOpen, onClose, patient }: EditPatientModalP
                   type="checkbox"
                   checked={form.isVip}
                   onChange={setChecked("isVip")}
-                  className="rounded border-stone-300 text-teal-600 focus:ring-teal-500"
+                  className="rounded border-stone-300 text-blue-600 focus:ring-blue-500"
                 />
                 VIP Patient
               </label>
@@ -238,7 +238,7 @@ export function EditPatientModal({ isOpen, onClose, patient }: EditPatientModalP
                   type="checkbox"
                   checked={form.isActive}
                   onChange={setChecked("isActive")}
-                  className="rounded border-stone-300 text-teal-600 focus:ring-teal-500"
+                  className="rounded border-stone-300 text-blue-600 focus:ring-blue-500"
                 />
                 Active
               </label>

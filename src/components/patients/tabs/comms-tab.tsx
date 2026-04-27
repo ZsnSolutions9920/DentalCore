@@ -16,7 +16,7 @@ const typeIcon: Record<string, React.ReactNode> = {
 };
 
 const typeColor: Record<string, string> = {
-  CALL: "text-teal-600 bg-teal-50",
+  CALL: "text-blue-600 bg-blue-50",
   SMS: "text-emerald-500 bg-[#E6FAF5]",
   EMAIL: "text-amber-500 bg-[#FFF6E5]",
   WHATSAPP: "text-emerald-500 bg-[#E6FAF5]",
@@ -35,7 +35,7 @@ export function CommsTab({ patientId }: { patientId: string }) {
       <Card padding="md">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-4 h-4 text-teal-600" />
+            <MessageSquare className="w-4 h-4 text-blue-600" />
             <h3 className="text-sm font-semibold text-stone-900">
               Communication History ({comms.length})
             </h3>

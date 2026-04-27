@@ -238,7 +238,7 @@ export default function AppointmentsPage() {
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="px-3.5 py-2.5 text-sm bg-white border border-stone-200 rounded-xl text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all"
+              className="px-3.5 py-2.5 text-sm bg-white border border-stone-200 rounded-xl text-stone-900 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
             />
             <button
               type="button"
@@ -252,7 +252,7 @@ export default function AppointmentsPage() {
               <button
                 type="button"
                 onClick={() => setSelectedDate(getClinicToday())}
-                className="px-3 py-2.5 text-sm font-medium bg-white border border-stone-200 rounded-xl text-teal-600 hover:bg-teal-50 hover:border-teal-200 transition-all cursor-pointer"
+                className="px-3 py-2.5 text-sm font-medium bg-white border border-stone-200 rounded-xl text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer"
               >
                 Today
               </button>
@@ -293,7 +293,7 @@ export default function AppointmentsPage() {
               setTypeFilter("");
               setStatusFilter("");
             }}
-            className="text-sm text-teal-600 hover:text-teal-700 font-medium pb-2.5 cursor-pointer transition-colors"
+            className="text-sm text-blue-600 hover:text-blue-700 font-medium pb-2.5 cursor-pointer transition-colors"
           >
             Clear filters
           </button>
@@ -324,16 +324,16 @@ export default function AppointmentsPage() {
                 key={appt.id}
                 hover
                 onClick={() => setSelectedAppointment(appt)}
-                className="group transition-all duration-200 hover:shadow-md hover:border-teal-200/60"
+                className="group transition-all duration-200 hover:shadow-md hover:border-blue-200/60"
               >
                 <div className="flex items-center gap-3 sm:gap-5 p-4 sm:p-5 flex-wrap sm:flex-nowrap">
                   {/* Time Block */}
                   <div className="flex-shrink-0 w-16 sm:w-20 text-center">
-                    <div className="bg-teal-50 rounded-2xl px-3 py-2.5 border border-teal-100/60">
-                      <p className="text-lg font-bold text-teal-700 leading-tight tracking-tight">
+                    <div className="bg-blue-50 rounded-2xl px-3 py-2.5 border border-blue-100/60">
+                      <p className="text-lg font-bold text-blue-700 leading-tight tracking-tight">
                         {appt.startTime}
                       </p>
-                      <p className="text-[10px] text-teal-500 font-medium mt-0.5">
+                      <p className="text-[10px] text-blue-500 font-medium mt-0.5">
                         {appt.endTime}
                       </p>
                     </div>

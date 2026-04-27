@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   Calendar, Clock, Users, Stethoscope, Brain, Play, Eye, Search,
   UserPlus, CalendarPlus, Mic, MicOff, FileText, ChevronRight,
-  CheckCircle, AlertCircle, Timer, Activity, Pill, FlaskConical,
+  CheckCircle, AlertCircle, Timer, Pill, FlaskConical,
   CalendarClock, Phone, Sparkles,
 } from "lucide-react";
 import { StatCard } from "@/components/ui/stat-card";
@@ -119,7 +119,7 @@ export function DoctorDashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div className="flex items-center gap-4">
-          <Avatar name={user?.name || "Doctor"} size="lg" className="ring-2 ring-teal-200 hidden sm:flex" />
+          <Avatar name={user?.name || "Doctor"} size="lg" className="ring-2 ring-blue-200 hidden sm:flex" />
           <div>
             <h1 className="text-xl sm:text-2xl font-bold text-stone-900">{greeting}, {user?.name || "Doctor"}</h1>
             <p className="text-sm text-stone-400 mt-0.5">
@@ -133,7 +133,7 @@ export function DoctorDashboard() {
           <div className="flex items-center gap-1 bg-stone-100 rounded-xl p-0.5">
             {([
               { v: "available" as const, l: "Available", color: "bg-emerald-500" },
-              { v: "in_consultation" as const, l: "In Consult", color: "bg-teal-500" },
+              { v: "in_consultation" as const, l: "In Consult", color: "bg-blue-500" },
               { v: "on_break" as const, l: "Break", color: "bg-amber-500" },
             ]).map((s) => (
               <button key={s.v} onClick={() => setDoctorStatus(s.v)}
@@ -199,15 +199,15 @@ export function DoctorDashboard() {
 
           {/* Currently In Progress */}
           {inProgress && (
-            <Card className="border-l-4 border-l-teal-500 bg-teal-50/20">
+            <Card className="border-l-4 border-l-blue-500 bg-blue-50/20">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center animate-pulse">
-                      <Stethoscope className="w-5 h-5 text-teal-600" />
+                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center animate-pulse">
+                      <Stethoscope className="w-5 h-5 text-blue-600" />
                     </div>
                     <div>
-                      <p className="text-xs text-teal-600 font-semibold uppercase tracking-wider">In Progress</p>
+                      <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider">In Progress</p>
                       <p className="text-base font-bold text-stone-900 mt-0.5">{inProgress.patientName}</p>
                       <p className="text-xs text-stone-500">{fmtTime(inProgress.startTime)} &middot; {inProgress.type.replace("_", " ")}</p>
                     </div>
@@ -308,7 +308,7 @@ export function DoctorDashboard() {
                   <span className="text-sm font-semibold text-stone-900">My Schedule</span>
                   <Badge variant="primary" className="text-[9px]">{myAppointments.length}</Badge>
                 </div>
-                <Link href="/calendar" className="text-xs text-teal-600 font-medium hover:text-teal-700">
+                <Link href="/calendar" className="text-xs text-blue-600 font-medium hover:text-blue-700">
                   Calendar
                 </Link>
               </div>
@@ -321,7 +321,7 @@ export function DoctorDashboard() {
                   <div key={appt.id} className={cn(
                     "flex items-center gap-3 px-4 py-3 hover:bg-stone-50 transition-colors",
                     i < myAppointments.length - 1 && "border-b border-stone-50",
-                    appt.status === "IN_PROGRESS" && "bg-teal-50/30"
+                    appt.status === "IN_PROGRESS" && "bg-blue-50/30"
                   )}>
                     <div className="w-12 text-center shrink-0">
                       <p className="text-sm font-semibold text-stone-900">{fmtTime(appt.startTime)}</p>
@@ -360,7 +360,7 @@ export function DoctorDashboard() {
             </CardHeader>
             <CardContent className="p-3 pt-0 space-y-1.5">
               {[
-                { label: "Consultation", icon: <Stethoscope className="w-4 h-4" />, href: "/consultation", color: "text-teal-600", bg: "bg-teal-50" },
+                { label: "Consultation", icon: <Stethoscope className="w-4 h-4" />, href: "/consultation", color: "text-blue-600", bg: "bg-blue-50" },
                 { label: "AI Transcribe", icon: <Brain className="w-4 h-4" />, href: "/ai", color: "text-indigo-600", bg: "bg-indigo-50" },
                 { label: "Follow-Ups", icon: <CalendarClock className="w-4 h-4" />, href: "/follow-ups", color: "text-amber-600", bg: "bg-amber-50" },
                 { label: "Lab Results", icon: <FlaskConical className="w-4 h-4" />, href: "/lab-results", color: "text-emerald-600", bg: "bg-emerald-50" },
@@ -378,30 +378,8 @@ export function DoctorDashboard() {
             </CardContent>
           </Card>
 
-          {/* Live Activity */}
-          {activities.length > 0 && (
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-teal-500" />
-                  <span className="text-sm font-semibold text-stone-900">Live Activity</span>
-                </div>
-              </CardHeader>
-              <CardContent className="p-3 pt-0">
-                <div className="space-y-2">
-                  {activities.slice(0, 5).map((act) => (
-                    <div key={act.id} className="flex items-start gap-2 text-xs text-stone-500 py-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 shrink-0" />
-                      <span>{act.message}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
           {/* Today Summary */}
-          <Card className="bg-gradient-to-br from-stone-50 to-teal-50/30">
+          <Card className="bg-gradient-to-br from-stone-50 to-blue-50/30">
             <CardContent className="p-4">
               <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Today&apos;s Summary</p>
               <div className="space-y-2.5">
@@ -425,7 +403,7 @@ export function DoctorDashboard() {
                 </div>
                 <div className="border-t border-stone-200 pt-2 flex items-center justify-between">
                   <span className="text-sm font-medium text-stone-700">Completion</span>
-                  <span className="text-sm font-bold text-teal-600">
+                  <span className="text-sm font-bold text-blue-600">
                     {myAppointments.length > 0 ? Math.round((completed.length / myAppointments.length) * 100) : 0}%
                   </span>
                 </div>
@@ -568,7 +546,7 @@ function QuickOutcomePanel({ appointment, onClose }: { appointment: Appointment;
                   className={cn(
                     "py-2.5 px-3 rounded-xl border-2 text-xs font-medium text-left cursor-pointer transition-all",
                     outcome === o.value
-                      ? "border-teal-400 bg-teal-50 text-teal-700"
+                      ? "border-blue-400 bg-blue-50 text-blue-700"
                       : "border-stone-200 bg-white text-stone-600 hover:border-stone-300"
                   )}>{o.label}</button>
               ))}

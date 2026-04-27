@@ -158,7 +158,7 @@ export default function FollowUpsPage() {
               onClick={() => setActiveFilter(f)}
               className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
                 activeFilter === f
-                  ? "bg-teal-600 text-white shadow-sm"
+                  ? "bg-blue-600 text-white shadow-sm"
                   : "bg-stone-100 text-stone-500 hover:bg-stone-200"
               }`}
             >
@@ -195,7 +195,7 @@ export default function FollowUpsPage() {
                     className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-semibold ${
                       overdue
                         ? "bg-red-50 text-red-600"
-                        : "bg-teal-50 text-teal-700"
+                        : "bg-blue-50 text-blue-700"
                     }`}
                   >
                     {followUp.patientName

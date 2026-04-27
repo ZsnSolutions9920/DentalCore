@@ -36,7 +36,7 @@ export function AppointmentsTab({ patientId }: { patientId: string }) {
       <Card padding="md">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-teal-600" />
+            <Calendar className="w-4 h-4 text-blue-600" />
             <h3 className="text-sm font-semibold text-stone-900">
               Appointments ({appointments.length})
             </h3>

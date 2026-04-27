@@ -63,8 +63,8 @@ export function TimePicker({
         onClick={() => setOpen(!open)}
         className={cn(
           "w-full flex items-center gap-2.5 px-3.5 py-2.5 text-sm bg-white border border-stone-200 rounded-xl transition-all cursor-pointer text-left",
-          "hover:border-stone-300 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500",
-          open && "ring-2 ring-teal-500/20 border-teal-500",
+          "hover:border-stone-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500",
+          open && "ring-2 ring-blue-500/20 border-blue-500",
           className
         )}
       >
@@ -92,7 +92,7 @@ export function TimePicker({
                         className={cn(
                           "py-2 rounded-lg text-xs font-medium transition-all cursor-pointer",
                           value === s.value
-                            ? "bg-teal-500 text-white shadow-sm"
+                            ? "bg-blue-500 text-white shadow-sm"
                             : "text-stone-700 hover:bg-stone-100"
                         )}
                       >
@@ -116,7 +116,7 @@ export function TimePicker({
                         className={cn(
                           "py-2 rounded-lg text-xs font-medium transition-all cursor-pointer",
                           value === s.value
-                            ? "bg-teal-500 text-white shadow-sm"
+                            ? "bg-blue-500 text-white shadow-sm"
                             : "text-stone-700 hover:bg-stone-100"
                         )}
                       >

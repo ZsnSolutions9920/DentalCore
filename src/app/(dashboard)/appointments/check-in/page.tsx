@@ -179,7 +179,7 @@ export default function CheckInPage() {
 
       {/* Search Bar - Large & Prominent */}
       <div className="relative">
-        <div className="bg-white rounded-2xl border-2 border-stone-200 shadow-sm focus-within:border-teal-400 focus-within:shadow-md focus-within:shadow-teal-100/50 transition-all duration-200">
+        <div className="bg-white rounded-2xl border-2 border-stone-200 shadow-sm focus-within:border-blue-400 focus-within:shadow-md focus-within:shadow-blue-100/50 transition-all duration-200">
           <div className="flex items-center px-5 py-1">
             <Search className="w-5 h-5 text-stone-400 flex-shrink-0" />
             <input
@@ -287,7 +287,7 @@ export default function CheckInPage() {
                               e.stopPropagation();
                               handleCheckIn(appt.id);
                             }}
-                            className="rounded-2xl px-8 py-3.5 text-base shadow-sm shadow-teal-200"
+                            className="rounded-2xl px-8 py-3.5 text-base shadow-sm shadow-blue-200"
                           >
                             Check In
                           </Button>
@@ -337,8 +337,8 @@ export default function CheckInPage() {
             <CardHeader className="border-b-0 pb-0">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 bg-teal-50 rounded-xl flex items-center justify-center">
-                    <Users className="w-4 h-4 text-teal-600" />
+                  <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center">
+                    <Users className="w-4 h-4 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-stone-900">

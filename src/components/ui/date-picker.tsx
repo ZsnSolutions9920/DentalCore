@@ -80,8 +80,8 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
           onClick={() => setOpen(!open)}
           className={cn(
             "w-full flex items-center gap-2.5 px-3.5 py-2.5 text-sm bg-white border border-stone-200 rounded-xl transition-all cursor-pointer text-left",
-            "hover:border-stone-300 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500",
-            open && "ring-2 ring-teal-500/20 border-teal-500",
+            "hover:border-stone-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500",
+            open && "ring-2 ring-blue-500/20 border-blue-500",
             error && "border-red-300",
             !displayValue && "text-stone-400",
             className
@@ -143,9 +143,9 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
                       className={cn(
                         "h-8 w-full rounded-lg text-xs font-medium transition-all cursor-pointer",
                         isSelected
-                          ? "bg-teal-500 text-white shadow-sm"
+                          ? "bg-blue-500 text-white shadow-sm"
                           : isToday
-                            ? "bg-teal-50 text-teal-700 font-bold ring-1 ring-teal-200"
+                            ? "bg-blue-50 text-blue-700 font-bold ring-1 ring-blue-200"
                             : "text-stone-700 hover:bg-stone-100"
                       )}
                     >
@@ -157,7 +157,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
 
               {/* Today shortcut */}
               <div className="mt-2 pt-2 border-t border-stone-100 flex justify-center">
-                <button type="button" onClick={goToday} className="text-xs text-teal-600 font-medium hover:text-teal-700 cursor-pointer">
+                <button type="button" onClick={goToday} className="text-xs text-blue-600 font-medium hover:text-blue-700 cursor-pointer">
                   Today
                 </button>
               </div>

@@ -44,10 +44,10 @@ interface RoomCalendar {
 }
 
 const STATUS_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  available: { bg: "bg-white hover:bg-teal-50", border: "border-stone-100 hover:border-teal-300", text: "text-stone-300" },
+  available: { bg: "bg-white hover:bg-blue-50", border: "border-stone-100 hover:border-blue-300", text: "text-stone-300" },
   booked: { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-700" },
   checked_in: { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700" },
-  in_progress: { bg: "bg-teal-50", border: "border-teal-200", text: "text-teal-700" },
+  in_progress: { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-700" },
   completed: { bg: "bg-stone-50", border: "border-stone-200", text: "text-stone-400" },
   blocked: { bg: "bg-stone-100", border: "border-stone-200", text: "text-stone-400" },
   unavailable: { bg: "bg-stone-50", border: "border-transparent", text: "text-stone-300" },
@@ -144,7 +144,7 @@ export default function CalendarPage() {
       {/* Summary Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
         <div className="bg-white rounded-xl border border-stone-100 p-3 text-center">
-          <p className="text-2xl font-bold text-teal-600">{summary.availableSlots || 0}</p>
+          <p className="text-2xl font-bold text-blue-600">{summary.availableSlots || 0}</p>
           <p className="text-[11px] text-stone-400 mt-0.5">Available Slots</p>
         </div>
         <div className="bg-white rounded-xl border border-stone-100 p-3 text-center">
@@ -170,7 +170,7 @@ export default function CalendarPage() {
             className="px-2 py-1.5 text-sm font-medium text-stone-900 bg-transparent border-none outline-none cursor-pointer" />
           <button onClick={() => navigateDate(1)} className="p-2 rounded-lg hover:bg-stone-100 cursor-pointer"><ChevronRight className="w-4 h-4 text-stone-500" /></button>
           {selectedDate !== today && (
-            <button onClick={() => setSelectedDate(today)} className="px-2 py-1 text-xs font-medium text-teal-600 hover:bg-teal-50 rounded-lg cursor-pointer">Today</button>
+            <button onClick={() => setSelectedDate(today)} className="px-2 py-1 text-xs font-medium text-blue-600 hover:bg-blue-50 rounded-lg cursor-pointer">Today</button>
           )}
         </div>
 
@@ -329,7 +329,7 @@ function DayGrid({ data, date, showDoctors, showRooms, onSlotClick, onAppointmen
             {columns.map((col) => (
               <div key={col.id} className="px-3 py-3 text-center border-r border-stone-50 last:border-r-0">
                 <div className="flex items-center justify-center gap-1.5">
-                  {col.type === "doctor" ? <Stethoscope className="w-3.5 h-3.5 text-teal-500" /> : <DoorOpen className="w-3.5 h-3.5 text-violet-500" />}
+                  {col.type === "doctor" ? <Stethoscope className="w-3.5 h-3.5 text-blue-500" /> : <DoorOpen className="w-3.5 h-3.5 text-violet-500" />}
                   <span className="text-sm font-semibold text-stone-900 truncate">{col.label}</span>
                 </div>
                 {col.sub && <p className="text-[10px] text-stone-400 mt-0.5">{col.sub}</p>}
@@ -401,7 +401,7 @@ function DayGrid({ data, date, showDoctors, showRooms, onSlotClick, onAppointmen
                         </div>
                       ) : slot.status === "available" ? (
                         <div className="h-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                          <Plus className="w-3.5 h-3.5 text-teal-400" />
+                          <Plus className="w-3.5 h-3.5 text-blue-400" />
                         </div>
                       ) : null}
                     </div>
@@ -433,8 +433,8 @@ function WeekGrid({ data, dates }: { data: Record<string, { doctors: DoctorCalen
             {dates.map((d) => {
               const isToday = d === getClinicToday();
               return (
-                <div key={d} className={cn("px-2 py-3 text-center border-r border-stone-50 last:border-r-0", isToday && "bg-teal-50/30")}>
-                  <p className={cn("text-xs font-semibold", isToday ? "text-teal-700" : "text-stone-700")}>{formatDateLabel(d)}</p>
+                <div key={d} className={cn("px-2 py-3 text-center border-r border-stone-50 last:border-r-0", isToday && "bg-blue-50/30")}>
+                  <p className={cn("text-xs font-semibold", isToday ? "text-blue-700" : "text-stone-700")}>{formatDateLabel(d)}</p>
                 </div>
               );
             })}
@@ -445,7 +445,7 @@ function WeekGrid({ data, dates }: { data: Record<string, { doctors: DoctorCalen
             <div key={doc.doctor.id} className="grid border-b border-stone-50"
               style={{ gridTemplateColumns: `140px repeat(${dates.length}, 1fr)` }}>
               <div className="px-3 py-3 border-r border-stone-100 flex items-center gap-2">
-                <Stethoscope className="w-3.5 h-3.5 text-teal-500 shrink-0" />
+                <Stethoscope className="w-3.5 h-3.5 text-blue-500 shrink-0" />
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-stone-900 truncate">{doc.doctor.name}</p>
                   <p className="text-[10px] text-stone-400">{doc.doctor.speciality || ""}</p>
@@ -462,7 +462,7 @@ function WeekGrid({ data, dates }: { data: Record<string, { doctors: DoctorCalen
                 const load = total > 0 ? Math.round((booked / total) * 100) : 0;
 
                 return (
-                  <div key={dateKey} className={cn("py-2.5 px-2 border-r border-stone-50 last:border-r-0", isToday && "bg-teal-50/20")}>
+                  <div key={dateKey} className={cn("py-2.5 px-2 border-r border-stone-50 last:border-r-0", isToday && "bg-blue-50/20")}>
                     {dayDoc.isOnLeave ? (
                       <div className="text-center">
                         <Badge variant="danger" className="text-[10px]">Leave</Badge>
@@ -477,7 +477,7 @@ function WeekGrid({ data, dates }: { data: Record<string, { doctors: DoctorCalen
                         <div className="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
                           <div className={cn(
                             "h-full rounded-full transition-all",
-                            load > 80 ? "bg-red-400" : load > 50 ? "bg-amber-400" : "bg-teal-400"
+                            load > 80 ? "bg-red-400" : load > 50 ? "bg-amber-400" : "bg-blue-400"
                           )} style={{ width: `${load}%` }} />
                         </div>
                         <p className="text-[10px] text-stone-400">{available} free</p>
@@ -684,7 +684,7 @@ function QuickBookPanel({ slot, onClose, doctors }: {
                     {searchResults.slice(0, 8).map((p) => (
                       <button key={p.id} onClick={() => { setPatientId(p.id); setPatientSearch(""); }}
                         className="w-full flex items-center gap-3 px-3.5 py-2.5 hover:bg-stone-50 text-left cursor-pointer border-b border-stone-50 last:border-b-0">
-                        <div className="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center text-xs font-bold text-teal-600">{p.firstName?.[0]}{p.lastName?.[0]}</div>
+                        <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-xs font-bold text-blue-600">{p.firstName?.[0]}{p.lastName?.[0]}</div>
                         <div>
                           <p className="text-sm font-medium text-stone-900">{p.firstName} {p.lastName}</p>
                           <p className="text-xs text-stone-400">{p.patientCode} · {p.phone}</p>
@@ -752,7 +752,7 @@ function QuickBookPanel({ slot, onClose, doctors }: {
           {/* Step 4: Time — dynamic based on doctor availability */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-5 h-5 rounded-full bg-teal-100 flex items-center justify-center text-[10px] font-bold text-teal-600">4</div>
+              <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-600">4</div>
               <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
                 Time {doctorId && busyTimes.size > 0 && <span className="text-stone-300 normal-case font-normal">({busyTimes.size} slots busy)</span>}
               </span>
@@ -768,8 +768,8 @@ function QuickBookPanel({ slot, onClose, doctors }: {
                       className={cn(
                         "py-2 rounded-lg text-xs font-medium transition-all",
                         isBusy ? "bg-red-50 text-red-300 line-through cursor-not-allowed" :
-                        selectedTime === t ? "bg-teal-600 text-white shadow-sm cursor-pointer" :
-                        "bg-stone-50 text-stone-600 hover:bg-teal-50 hover:text-teal-700 cursor-pointer"
+                        selectedTime === t ? "bg-blue-600 text-white shadow-sm cursor-pointer" :
+                        "bg-stone-50 text-stone-600 hover:bg-blue-50 hover:text-blue-700 cursor-pointer"
                       )}>{fmtTime(t)}</button>
                   );
                 })}
@@ -799,18 +799,18 @@ function AvailabilityPanel({ onBook }: {
   };
 
   return (
-    <Card className="border-teal-200 bg-teal-50/30">
+    <Card className="border-blue-200 bg-blue-50/30">
       <div className="p-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <Zap className="w-4 h-4 text-teal-600" />
+            <Zap className="w-4 h-4 text-blue-600" />
             <span className="text-sm font-semibold text-stone-900">Next Available Slots</span>
           </div>
           <div className="flex gap-1">
             {["CONSULTATION", "PROCEDURE", "FOLLOW_UP"].map((t) => (
               <button key={t} onClick={() => setSearchType(t)}
                 className={cn("px-2 py-1 rounded-lg text-[10px] font-medium cursor-pointer transition-all",
-                  searchType === t ? "bg-teal-500 text-white" : "bg-white text-stone-500 border border-stone-200"
+                  searchType === t ? "bg-blue-500 text-white" : "bg-white text-stone-500 border border-stone-200"
                 )}>{t.replace("_", " ")}</button>
             ))}
           </div>
@@ -823,12 +823,12 @@ function AvailabilityPanel({ onBook }: {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {slots.map((s, i) => (
               <button key={i} onClick={() => onBook(s)}
-                className="bg-white rounded-xl border border-stone-200 p-3 text-left hover:border-teal-300 hover:shadow-sm transition-all cursor-pointer group">
-                <p className="text-sm font-bold text-stone-900 group-hover:text-teal-700">{fmtTime(s.time)}</p>
+                className="bg-white rounded-xl border border-stone-200 p-3 text-left hover:border-blue-300 hover:shadow-sm transition-all cursor-pointer group">
+                <p className="text-sm font-bold text-stone-900 group-hover:text-blue-700">{fmtTime(s.time)}</p>
                 <p className="text-[10px] text-stone-400 mt-0.5">
                   {new Date(s.date + "T00:00:00").toLocaleDateString("en-PK", { weekday: "short", month: "short", day: "numeric", timeZone: CLINIC_TZ })}
                 </p>
-                <p className="text-[11px] text-teal-600 font-medium mt-1 truncate">{s.doctorName}</p>
+                <p className="text-[11px] text-blue-600 font-medium mt-1 truncate">{s.doctorName}</p>
               </button>
             ))}
           </div>

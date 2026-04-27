@@ -17,7 +17,7 @@ const sizeStyles = {
 };
 
 const bgColors = [
-  "bg-teal-100 text-teal-700",
+  "bg-blue-100 text-blue-700",
   "bg-indigo-100 text-indigo-700",
   "bg-amber-100 text-amber-700",
   "bg-rose-100 text-rose-700",

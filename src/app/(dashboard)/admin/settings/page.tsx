@@ -67,8 +67,8 @@ export default function AdminSettingsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center">
-            <Settings className="w-5 h-5 text-teal-600" />
+          <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+            <Settings className="w-5 h-5 text-blue-600" />
           </div>
           <div>
             <h1 className="text-xl sm:text-2xl font-semibold text-stone-900">Settings</h1>
@@ -88,7 +88,7 @@ export default function AdminSettingsPage() {
               onClick={() => setActiveTab(tab.value)}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all cursor-pointer ${
                 activeTab === tab.value
-                  ? "bg-teal-600 text-white shadow-sm"
+                  ? "bg-blue-600 text-white shadow-sm"
                   : "bg-stone-100 text-stone-600 hover:bg-stone-200"
               }`}
             >
@@ -196,7 +196,7 @@ export default function AdminSettingsPage() {
                       key={day}
                       className={`w-10 h-10 rounded-xl text-sm font-medium transition-all cursor-pointer ${
                         i < 6
-                          ? "bg-teal-50 text-teal-700 hover:bg-teal-100"
+                          ? "bg-blue-50 text-blue-700 hover:bg-blue-100"
                           : "bg-stone-100 text-stone-400"
                       }`}
                     >

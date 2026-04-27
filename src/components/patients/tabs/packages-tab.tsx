@@ -45,7 +45,7 @@ export function PackagesTab({ patientId }: { patientId: string }) {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Package className="w-4 h-4 text-teal-600" />
+                    <Package className="w-4 h-4 text-blue-600" />
                     <h3 className="text-sm font-semibold text-stone-900">{pp.packageName}</h3>
                   </div>
                   <Badge
@@ -106,7 +106,7 @@ export function PackagesTab({ patientId }: { patientId: string }) {
                     </div>
                     <div className="w-full h-2 rounded-full bg-stone-50">
                       <div
-                        className="h-2 rounded-full bg-teal-600 transition-all"
+                        className="h-2 rounded-full bg-blue-600 transition-all"
                         style={{ width: `${progressPercent}%` }}
                       />
                     </div>

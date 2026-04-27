@@ -149,7 +149,7 @@ export default function AgentApp() {
   // ---- LOGIN SCREEN ----
   if (!loggedIn) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-teal-600 to-teal-700 flex items-center justify-center px-6">
+      <div className="min-h-screen bg-gradient-to-b from-blue-600 to-blue-700 flex items-center justify-center px-6">
         <div className="w-full max-w-sm">
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -166,16 +166,16 @@ export default function AgentApp() {
             <div>
               <label className="text-xs font-medium text-stone-500 mb-1 block">Email</label>
               <input type="email" placeholder="you@clinic.com" value={email} onChange={e => setEmail(e.target.value)}
-                className="w-full px-4 py-3 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 outline-none" />
+                className="w-full px-4 py-3 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none" />
             </div>
             <div>
               <label className="text-xs font-medium text-stone-500 mb-1 block">Password</label>
               <input type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)}
                 onKeyDown={e => e.key === "Enter" && handleLogin()}
-                className="w-full px-4 py-3 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 outline-none" />
+                className="w-full px-4 py-3 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none" />
             </div>
             <button onClick={handleLogin} disabled={loginLoading}
-              className="w-full py-3.5 bg-teal-600 text-white rounded-xl font-semibold text-sm hover:bg-teal-700 active:scale-[0.98] transition-all disabled:opacity-50">
+              className="w-full py-3.5 bg-blue-600 text-white rounded-xl font-semibold text-sm hover:bg-blue-700 active:scale-[0.98] transition-all disabled:opacity-50">
               {loginLoading ? "Signing in..." : "Sign In"}
             </button>
             <div className="text-center">
@@ -200,35 +200,35 @@ export default function AgentApp() {
           <div>
             <label className="text-xs font-medium text-stone-500 mb-1 block">First Name *</label>
             <input type="text" value={newPatient.firstName} onChange={e => setNewPatient({ ...newPatient, firstName: e.target.value })}
-              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-teal-500" />
+              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-blue-500" />
           </div>
           <div>
             <label className="text-xs font-medium text-stone-500 mb-1 block">Last Name *</label>
             <input type="text" value={newPatient.lastName} onChange={e => setNewPatient({ ...newPatient, lastName: e.target.value })}
-              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-teal-500" />
+              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-blue-500" />
           </div>
           <div>
             <label className="text-xs font-medium text-stone-500 mb-1 block">Phone *</label>
             <input type="tel" value={newPatient.phone} onChange={e => setNewPatient({ ...newPatient, phone: e.target.value })}
               placeholder="+923001234567"
-              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-teal-500" />
+              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-blue-500" />
           </div>
           <div>
             <label className="text-xs font-medium text-stone-500 mb-1 block">Email</label>
             <input type="email" value={newPatient.email} onChange={e => setNewPatient({ ...newPatient, email: e.target.value })}
-              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-teal-500" />
+              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-blue-500" />
           </div>
           <div>
             <label className="text-xs font-medium text-stone-500 mb-1 block">Gender</label>
             <select value={newPatient.gender} onChange={e => setNewPatient({ ...newPatient, gender: e.target.value })}
-              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-teal-500">
+              className="w-full px-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-blue-500">
               <option value="MALE">Male</option>
               <option value="FEMALE">Female</option>
               <option value="OTHER">Other</option>
             </select>
           </div>
           <button onClick={createPatient} disabled={loading || !newPatient.firstName || !newPatient.lastName || !newPatient.phone}
-            className="w-full py-3.5 bg-teal-600 text-white rounded-xl font-semibold text-sm active:scale-[0.98] disabled:opacity-50 mt-4">
+            className="w-full py-3.5 bg-blue-600 text-white rounded-xl font-semibold text-sm active:scale-[0.98] disabled:opacity-50 mt-4">
             {loading ? "Saving..." : "Register Patient"}
           </button>
         </div>
@@ -247,8 +247,8 @@ export default function AgentApp() {
         <div className="flex-1 px-5 py-5 space-y-4">
           <div className="bg-white rounded-2xl border border-stone-100 p-5">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center">
-                <span className="text-lg font-bold text-teal-700">{selectedPatient.firstName[0]}{selectedPatient.lastName[0]}</span>
+              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-lg font-bold text-blue-700">{selectedPatient.firstName[0]}{selectedPatient.lastName[0]}</span>
               </div>
               <div>
                 <h2 className="text-lg font-bold text-stone-900">{selectedPatient.firstName} {selectedPatient.lastName}</h2>
@@ -276,7 +276,7 @@ export default function AgentApp() {
             </div>
           </div>
 
-          <a href={`tel:${selectedPatient.phone}`} className="block w-full py-3.5 bg-teal-600 text-white rounded-xl font-semibold text-sm text-center active:scale-[0.98]">
+          <a href={`tel:${selectedPatient.phone}`} className="block w-full py-3.5 bg-blue-600 text-white rounded-xl font-semibold text-sm text-center active:scale-[0.98]">
             <Phone className="w-4 h-4 inline mr-2" />Call Patient
           </a>
         </div>
@@ -347,7 +347,7 @@ export default function AgentApp() {
             <div className="bg-white rounded-2xl border border-stone-100">
               <div className="px-4 py-3 border-b border-stone-100 flex items-center justify-between">
                 <p className="text-sm font-semibold text-stone-900">Upcoming</p>
-                <button onClick={() => setTab("appointments")} className="text-xs text-teal-600 font-medium">View All</button>
+                <button onClick={() => setTab("appointments")} className="text-xs text-blue-600 font-medium">View All</button>
               </div>
               {appointments.length === 0 ? (
                 <div className="px-4 py-8 text-center">
@@ -358,8 +358,8 @@ export default function AgentApp() {
                 <div className="divide-y divide-stone-50">
                   {appointments.slice(0, 5).map(apt => (
                     <div key={apt.id} className="px-4 py-3 flex items-center gap-3">
-                      <div className="w-10 h-10 bg-teal-50 rounded-full flex items-center justify-center shrink-0">
-                        <Clock className="w-4 h-4 text-teal-600" />
+                      <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center shrink-0">
+                        <Clock className="w-4 h-4 text-blue-600" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-stone-900 truncate">
@@ -394,7 +394,7 @@ export default function AgentApp() {
               <input type="text" placeholder="Search patients..." value={searchQuery}
                 onChange={e => { setSearchQuery(e.target.value); }}
                 onKeyDown={e => { if (e.key === "Enter") loadPatients(searchQuery); }}
-                className="w-full pl-10 pr-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-teal-500" />
+                className="w-full pl-10 pr-4 py-3 text-sm bg-white border border-stone-200 rounded-xl outline-none focus:border-blue-500" />
               {searchQuery && (
                 <button onClick={() => { setSearchQuery(""); loadPatients(); }} className="absolute right-3 top-1/2 -translate-y-1/2">
                   <X className="w-4 h-4 text-stone-400" />
@@ -403,7 +403,7 @@ export default function AgentApp() {
             </div>
 
             <div className="flex gap-2">
-              <button onClick={() => loadPatients(searchQuery)} className="flex-1 py-2.5 bg-teal-600 text-white rounded-xl text-sm font-medium active:scale-[0.98]">
+              <button onClick={() => loadPatients(searchQuery)} className="flex-1 py-2.5 bg-blue-600 text-white rounded-xl text-sm font-medium active:scale-[0.98]">
                 Search
               </button>
               <button onClick={() => setSubScreen("new-patient")} className="py-2.5 px-4 bg-emerald-50 text-emerald-700 rounded-xl text-sm font-medium active:scale-[0.98]">
@@ -424,8 +424,8 @@ export default function AgentApp() {
                 {patients.map(p => (
                   <button key={p.id} onClick={() => { setSelectedPatient(p); setSubScreen("patient-detail"); }}
                     className="w-full bg-white rounded-xl border border-stone-100 px-4 py-3 flex items-center gap-3 active:bg-stone-50 text-left">
-                    <div className="w-10 h-10 bg-teal-50 rounded-full flex items-center justify-center shrink-0">
-                      <span className="text-sm font-bold text-teal-700">{p.firstName?.[0]}{p.lastName?.[0]}</span>
+                    <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center shrink-0">
+                      <span className="text-sm font-bold text-blue-700">{p.firstName?.[0]}{p.lastName?.[0]}</span>
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-stone-900 truncate">{p.firstName} {p.lastName}</p>
@@ -445,7 +445,7 @@ export default function AgentApp() {
             <div className="flex items-center gap-2 -mx-1 mb-1">
               <button onClick={() => setTab("home")} className="p-1.5 rounded-lg hover:bg-stone-100"><ArrowLeft className="w-5 h-5 text-stone-600" /></button>
               <h2 className="text-base font-bold text-stone-900 flex-1">Appointments</h2>
-              <button onClick={loadAppointments} className="text-xs text-teal-600 font-medium">Refresh</button>
+              <button onClick={loadAppointments} className="text-xs text-blue-600 font-medium">Refresh</button>
             </div>
 
             {loading ? (
@@ -529,7 +529,7 @@ export default function AgentApp() {
         ]).map(t => (
           <button key={t.id} onClick={() => setTab(t.id)}
             className={cn("flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl min-w-[60px]",
-              tab === t.id ? "text-teal-600" : "text-stone-400"
+              tab === t.id ? "text-blue-600" : "text-stone-400"
             )}>
             {t.icon}
             <span className="text-[10px] font-medium">{t.label}</span>

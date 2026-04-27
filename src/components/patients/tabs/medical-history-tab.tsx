@@ -51,7 +51,7 @@ export function MedicalHistoryTab({ patient }: { patient: Patient }) {
       <Card padding="md">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <Stethoscope className="w-4 h-4 text-teal-600" />
+            <Stethoscope className="w-4 h-4 text-blue-600" />
             <h3 className="text-sm font-semibold text-stone-900">
               Medical Conditions ({history.length})
             </h3>

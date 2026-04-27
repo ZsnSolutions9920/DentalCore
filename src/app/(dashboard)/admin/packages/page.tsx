@@ -73,7 +73,7 @@ export default function PackagesPage() {
                     {pkg.isActive ? "Active" : "Inactive"}
                   </Badge>
                 </div>
-                <p className="text-xl font-bold text-teal-600">{formatCurrency(pkg.price)}</p>
+                <p className="text-xl font-bold text-blue-600">{formatCurrency(pkg.price)}</p>
               </div>
 
               {/* Description */}

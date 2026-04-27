@@ -26,7 +26,7 @@ export function StatusTimeline({ items, className }: StatusTimelineProps) {
             <div className={cn(
               "w-3 h-3 rounded-full mt-1.5 ring-4",
               item.status === "completed" && "bg-emerald-500 ring-emerald-50",
-              item.status === "current" && "bg-teal-500 ring-teal-50",
+              item.status === "current" && "bg-blue-500 ring-blue-50",
               (!item.status || item.status === "pending") && "bg-stone-200 ring-stone-50"
             )} />
             {index < items.length - 1 && <div className="w-px flex-1 bg-stone-200 min-h-[32px]" />}

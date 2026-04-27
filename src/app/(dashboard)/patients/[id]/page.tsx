@@ -40,6 +40,8 @@ const PackagesTab = lazy(() => import("@/components/patients/tabs/packages-tab")
 const CommsTab = lazy(() => import("@/components/patients/tabs/comms-tab").then((m) => ({ default: m.CommsTab })));
 const FollowUpsTab = lazy(() => import("@/components/patients/tabs/followups-tab").then((m) => ({ default: m.FollowUpsTab })));
 const AITranscriptsTab = lazy(() => import("@/components/patients/tabs/ai-transcripts-tab").then((m) => ({ default: m.AITranscriptsTab })));
+const DentalChartTab = lazy(() => import("@/components/patients/tabs/dental-chart-tab").then((m) => ({ default: m.DentalChartTab })));
+const BracesTab = lazy(() => import("@/components/patients/tabs/braces-tab").then((m) => ({ default: m.BracesTab })));
 import { EditPatientModal } from "@/components/patients/edit-patient-modal";
 import { CreateAppointmentModal } from "@/components/appointments/create-appointment-modal";
 
@@ -79,6 +81,8 @@ const TAB_GROUPS = [
     group: "Clinical",
     tabs: [
       { value: "overview", label: "Overview" },
+      { value: "dental-chart", label: "Dental Chart" },
+      { value: "braces", label: "Braces" },
       { value: "notes", label: "Notes" },
       { value: "prescriptions", label: "Rx" },
       { value: "procedures", label: "Procedures" },
@@ -107,8 +111,10 @@ const TAB_GROUPS = [
   },
 ];
 
-const TAB_COMPONENTS: Record<string, React.FC<{ patientId: string; patient?: Patient }>> = {
+const TAB_COMPONENTS: Record<string, React.FC<{ patientId: string; patient?: Patient; onExit?: () => void }>> = {
   overview: ({ patient }) => patient ? <OverviewTab patient={patient} /> : null,
+  "dental-chart": ({ patientId, onExit }) => <DentalChartTab patientId={patientId} onExit={onExit} />,
+  braces: ({ patientId }) => <BracesTab patientId={patientId} />,
   appointments: ({ patientId }) => <AppointmentsTab patientId={patientId} />,
   notes: ({ patientId }) => <NotesTab patientId={patientId} />,
   "skin-history": ({ patientId }) => <SkinHistoryTab patientId={patientId} />,
@@ -167,7 +173,7 @@ export default function PatientProfilePage({ params }: { params: Promise<{ id: s
         </button>
 
         <div className="flex items-center gap-3 sm:gap-4">
-          <Avatar name={`${patient.firstName} ${patient.lastName}`} size="lg" className="ring-2 ring-teal-200 w-12 h-12 sm:w-14 sm:h-14 shrink-0" />
+          <Avatar name={`${patient.firstName} ${patient.lastName}`} size="lg" className="ring-2 ring-blue-200 w-12 h-12 sm:w-14 sm:h-14 shrink-0" />
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
               <h1 className="text-lg sm:text-xl font-bold text-stone-900 truncate">{patient.firstName} {patient.lastName}</h1>
@@ -183,7 +189,7 @@ export default function PatientProfilePage({ params }: { params: Promise<{ id: s
 
           {/* Quick contact + actions */}
           <div className="flex items-center gap-1.5 shrink-0">
-            <a href={`tel:${patient.phone}`} className="w-9 h-9 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center hover:bg-teal-100 transition-colors">
+            <a href={`tel:${patient.phone}`} className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors">
               <Phone className="w-4 h-4" />
             </a>
             <a href={`https://wa.me/${patient.phone.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener noreferrer"
@@ -213,7 +219,7 @@ export default function PatientProfilePage({ params }: { params: Promise<{ id: s
         <div className="flex items-center gap-1">
           <input type="text" value={newTag} onChange={(e) => setNewTag(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter" && newTag.trim()) { addTag.mutate({ tag: newTag.trim() }); setNewTag(""); } }}
-            placeholder="+ tag" className="w-14 text-[10px] px-1.5 py-0.5 border border-stone-200 rounded-md bg-white focus:outline-none focus:ring-1 focus:ring-teal-400 placeholder:text-stone-300" />
+            placeholder="+ tag" className="w-14 text-[10px] px-1.5 py-0.5 border border-stone-200 rounded-md bg-white focus:outline-none focus:ring-1 focus:ring-blue-400 placeholder:text-stone-300" />
         </div>
       </div>
 
@@ -333,7 +339,7 @@ export default function PatientProfilePage({ params }: { params: Promise<{ id: s
                       className={cn(
                         "px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap cursor-pointer transition-all",
                         activeTab === tab.value
-                          ? "bg-teal-50 text-teal-700 border border-teal-200"
+                          ? "bg-blue-50 text-blue-700 border border-blue-200"
                           : "text-stone-500 hover:text-stone-700 hover:bg-stone-50"
                       )}>
                       {tab.label}
@@ -351,7 +357,11 @@ export default function PatientProfilePage({ params }: { params: Promise<{ id: s
               return activeTab === tab.value ? (
                 <Suspense key={tab.value} fallback={<div className="flex items-center justify-center py-8"><TabSpinner size="md" /></div>}>
                   <div className="mt-3 animate-fade-in">
-                    <Component patientId={patient.id} patient={patient} />
+                    <Component
+                      patientId={patient.id}
+                      patient={patient}
+                      onExit={() => setActiveTab("overview")}
+                    />
                   </div>
                 </Suspense>
               ) : null;

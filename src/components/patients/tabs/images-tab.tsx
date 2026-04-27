@@ -36,7 +36,7 @@ export function ImagesTab({ patientId }: { patientId: string }) {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <ImageIcon className="w-4 h-4 text-teal-600" />
+              <ImageIcon className="w-4 h-4 text-blue-600" />
               <h3 className="text-sm font-semibold text-stone-900">
                 Images ({images.length})
               </h3>
@@ -56,7 +56,7 @@ export function ImagesTab({ patientId }: { patientId: string }) {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-3 py-1 rounded-full text-xs font-medium cursor-pointer transition-colors ${
                   activeCategory === cat
-                    ? "bg-teal-600 text-white"
+                    ? "bg-blue-600 text-white"
                     : "bg-stone-50 text-stone-500 hover:bg-stone-100"
                 }`}
               >

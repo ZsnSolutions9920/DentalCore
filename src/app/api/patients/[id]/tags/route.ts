@@ -21,12 +21,10 @@ export async function GET(
 
     const tags = await prisma.patientTag.findMany({
       where: { patientId: id },
-      orderBy: { createdAt: "desc" },
+      orderBy: { id: "desc" },
       select: {
         id: true,
         tag: true,
-        color: true,
-        createdAt: true,
       },
     });
 
@@ -55,7 +53,6 @@ export async function POST(
       data: {
         patientId: id,
         tag: body.tag,
-        color: body.color,
       },
     });
 

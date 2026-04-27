@@ -100,14 +100,14 @@ export default function VitalsPage() {
         </h1>
         {selectedPatient ? (
           <div className="flex items-center gap-3 mt-2">
-            <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center">
-              <span className="text-sm font-bold text-teal-700">{selectedPatient.firstName?.[0]}{selectedPatient.lastName?.[0]}</span>
+            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+              <span className="text-sm font-bold text-blue-700">{selectedPatient.firstName?.[0]}{selectedPatient.lastName?.[0]}</span>
             </div>
             <div>
               <p className="text-base font-semibold text-stone-900">{selectedPatient.firstName} {selectedPatient.lastName}</p>
               <p className="text-xs text-stone-400">{selectedPatient.patientCode} · {selectedPatient.phone || "No phone"}</p>
             </div>
-            <button onClick={() => setSelectedPatientId("")} className="ml-auto text-xs text-teal-600 hover:underline cursor-pointer">Change</button>
+            <button onClick={() => setSelectedPatientId("")} className="ml-auto text-xs text-blue-600 hover:underline cursor-pointer">Change</button>
           </div>
         ) : (
           <p className="text-sm text-stone-500 mt-1">Select a patient to record vitals</p>
@@ -137,10 +137,10 @@ export default function VitalsPage() {
                 <button
                   key={patient.id}
                   onClick={() => { setSelectedPatientId(patient.id); setPatientSearch(""); }}
-                  className="w-full text-left p-3 rounded-xl bg-stone-50 hover:bg-teal-50 hover:border-teal-200 border border-stone-100 transition-all cursor-pointer"
+                  className="w-full text-left p-3 rounded-xl bg-stone-50 hover:bg-blue-50 hover:border-blue-200 border border-stone-100 transition-all cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-teal-50 text-teal-700 flex items-center justify-center text-xs font-semibold">
+                    <div className="w-9 h-9 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center text-xs font-semibold">
                       {patient.firstName?.[0]}{patient.lastName?.[0]}
                     </div>
                     <div>
@@ -225,7 +225,7 @@ export default function VitalsPage() {
                       placeholder="Systolic"
                       value={systolicBP}
                       onChange={(e) => setSystolicBP(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-sm bg-white border border-stone-200 rounded-xl text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all"
+                      className="w-full px-3.5 py-2.5 text-sm bg-white border border-stone-200 rounded-xl text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                     />
                     <span className="text-stone-300 font-bold text-lg">/</span>
                     <input
@@ -233,7 +233,7 @@ export default function VitalsPage() {
                       placeholder="Diastolic"
                       value={diastolicBP}
                       onChange={(e) => setDiastolicBP(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-sm bg-white border border-stone-200 rounded-xl text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all"
+                      className="w-full px-3.5 py-2.5 text-sm bg-white border border-stone-200 rounded-xl text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                     />
                   </div>
                 </div>

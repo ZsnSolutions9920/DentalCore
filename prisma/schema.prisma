@@ -66,6 +66,7 @@ model User {
   patientsAssigned    Patient[]
   schedules           Schedule[]
   leaves              DoctorLeave[]
+  orthoCases          OrthoCase[]   @relation("OrthoCaseDoctor")
 }
 
 model Patient {
@@ -123,6 +124,84 @@ model Patient {
   consents       Consent[]
   convertedLeads Lead[]             @relation("LeadConvertedPatient")
   callLogs       CallLog[]          @relation("PatientCallLogs")
+  toothRecords   ToothRecord[]
+  orthoCases     OrthoCase[]
+}
+
+model OrthoCase {
+  id               String       @id @default(cuid())
+  patientId        String
+  patient          Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  doctorId         String?
+  doctor           User?        @relation("OrthoCaseDoctor", fields: [doctorId], references: [id])
+
+  type             String       @default("METAL")          // METAL, CERAMIC, LINGUAL, CLEAR_ALIGNER, SELF_LIGATING
+  arches           String       @default("BOTH")           // UPPER, LOWER, BOTH
+  status           String       @default("CONSULTATION")   // CONSULTATION, RECORDS, PLANNING, ACTIVE, RETENTION, COMPLETED, CANCELLED
+
+  chiefComplaint   String?
+  diagnosis        String?
+  treatmentPlan    String?
+
+  startDate        DateTime?
+  estimatedEndDate DateTime?
+  actualEndDate    DateTime?
+  intervalWeeks    Int          @default(4)
+
+  totalCost        Float        @default(0)
+  paidAmount       Float        @default(0)
+
+  notes            String?
+
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  visits           OrthoVisit[]
+
+  @@index([patientId])
+  @@index([status])
+}
+
+model OrthoVisit {
+  id              String    @id @default(cuid())
+  caseId          String
+  orthoCase       OrthoCase @relation(fields: [caseId], references: [id], onDelete: Cascade)
+
+  type            String    @default("ADJUSTMENT") // BRACKET_PLACEMENT, ADJUSTMENT, WIRE_CHANGE, ELASTICS, REMOVAL, RETAINER_FITTING, PROGRESS_CHECK, EMERGENCY
+  visitDate       DateTime  @default(now())
+
+  performedById   String?
+  performedByName String?
+
+  wireUpper       String?
+  wireLower       String?
+  elastics        String?
+
+  notes           String?
+  complications   String?
+  nextVisitDate   DateTime?
+
+  createdAt       DateTime  @default(now())
+
+  @@index([caseId])
+  @@index([visitDate])
+}
+
+model ToothRecord {
+  id        String   @id @default(cuid())
+  patientId String
+  patient   Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  fdi       Int
+  status    String   @default("PROBLEM")
+  conditions String?
+  treatment String?
+  notes     String?
+  updatedById String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([patientId, fdi])
+  @@index([patientId])
 }
 
 model Allergy {

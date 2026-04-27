@@ -13,13 +13,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles = {
-  primary: "bg-teal-600 text-white hover:bg-teal-700 shadow-sm active:scale-[0.98]",
+  primary: "bg-blue-600 text-white hover:bg-blue-700 shadow-sm active:scale-[0.98]",
   secondary: "bg-stone-100 text-stone-700 hover:bg-stone-200 active:scale-[0.98]",
   ghost: "bg-transparent text-stone-600 hover:bg-stone-100",
   danger: "bg-red-50 text-red-600 hover:bg-red-100 active:scale-[0.98]",
   success: "bg-emerald-50 text-emerald-700 hover:bg-emerald-100 active:scale-[0.98]",
   outline: "bg-white text-stone-700 border border-stone-200 hover:bg-stone-50 hover:border-stone-300",
-  soft: "bg-teal-50 text-teal-700 hover:bg-teal-100 active:scale-[0.98]",
+  soft: "bg-blue-50 text-blue-700 hover:bg-blue-100 active:scale-[0.98]",
 };
 
 const sizeStyles = {
@@ -34,7 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none cursor-pointer select-none",
+          "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none cursor-pointer select-none",
           variantStyles[variant],
           sizeStyles[size],
           className

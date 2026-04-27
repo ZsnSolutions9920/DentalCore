@@ -210,7 +210,7 @@ export function CreateAppointmentModal({ isOpen, onClose, preselectedPatientId }
                     {filteredPatients.map((p) => (
                       <button key={p.id} onClick={() => { setPatientId(p.id); setPatientSearch(""); }}
                         className="w-full flex items-center gap-3 px-3.5 py-2.5 hover:bg-stone-50 transition-colors text-left cursor-pointer border-b border-stone-50 last:border-b-0">
-                        <div className="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center text-xs font-bold text-teal-600">
+                        <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-xs font-bold text-blue-600">
                           {p.firstName[0]}{p.lastName[0]}
                         </div>
                         <div>
@@ -249,7 +249,7 @@ export function CreateAppointmentModal({ isOpen, onClose, preselectedPatientId }
                     <button key={t.id} onClick={() => { setDuration(String(t.duration)); setNotes(t.name); }}
                       className={cn(
                         "px-2.5 py-1 rounded-lg border text-[11px] font-medium cursor-pointer transition-all",
-                        notes === t.name ? "border-teal-300 bg-teal-50 text-teal-700" : "border-stone-200 text-stone-500 hover:border-stone-300"
+                        notes === t.name ? "border-blue-300 bg-blue-50 text-blue-700" : "border-stone-200 text-stone-500 hover:border-stone-300"
                       )}>
                       {t.name} <span className="text-stone-400">({t.duration}min)</span>
                     </button>
@@ -262,7 +262,7 @@ export function CreateAppointmentModal({ isOpen, onClose, preselectedPatientId }
           {/* Doctor */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Stethoscope className="w-4 h-4 text-teal-500" />
+              <Stethoscope className="w-4 h-4 text-blue-500" />
               <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Doctor</span>
             </div>
             <Select placeholder="Select doctor" value={doctorId} onChange={(e) => setDoctorId(e.target.value)}
@@ -271,7 +271,7 @@ export function CreateAppointmentModal({ isOpen, onClose, preselectedPatientId }
                 label: d.name + (d.id === lastDoctor ? " (last seen)" : d.id === selectedPatient?.assignedDoctorId ? " (assigned)" : ""),
               }))} />
             {patientId && !doctorId && lastDoctor && (
-              <p className="text-xs text-teal-600 mt-1">
+              <p className="text-xs text-blue-600 mt-1">
                 Patient last seen by {sortedDoctors.find((d) => d.id === lastDoctor)?.name || "a doctor"}
               </p>
             )}

@@ -32,15 +32,15 @@ export function FileUpload({ onFilesSelected, accept, multiple, className, ...pr
         onDrop={(e) => { e.preventDefault(); setIsDragging(false); handleFiles(e.dataTransfer.files); }}
         className={cn(
           "border-2 border-dashed rounded-2xl p-10 text-center transition-all cursor-pointer",
-          isDragging ? "border-teal-400 bg-teal-50" : "border-stone-200 hover:border-teal-300 hover:bg-teal-50/30"
+          isDragging ? "border-blue-400 bg-blue-50" : "border-stone-200 hover:border-blue-300 hover:bg-blue-50/30"
         )}
       >
         <input type="file" accept={accept} multiple={multiple} onChange={(e) => e.target.files && handleFiles(e.target.files)} className="hidden" id="file-upload" />
         <label htmlFor="file-upload" className="cursor-pointer">
-          <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center mx-auto mb-3">
-            <Upload className="w-5 h-5 text-teal-600" />
+          <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-3">
+            <Upload className="w-5 h-5 text-blue-600" />
           </div>
-          <p className="text-sm text-stone-700"><span className="text-teal-600 font-medium">Click to upload</span> or drag and drop</p>
+          <p className="text-sm text-stone-700"><span className="text-blue-600 font-medium">Click to upload</span> or drag and drop</p>
           <p className="text-xs text-stone-400 mt-1">PDF, JPG, PNG up to 10MB</p>
         </label>
       </div>
@@ -49,7 +49,7 @@ export function FileUpload({ onFilesSelected, accept, multiple, className, ...pr
           {files.map((file, i) => (
             <div key={i} className="flex items-center justify-between px-4 py-2.5 bg-stone-50 rounded-xl">
               <div className="flex items-center gap-2.5">
-                <FileText className="w-4 h-4 text-teal-600" />
+                <FileText className="w-4 h-4 text-blue-600" />
                 <span className="text-sm text-stone-700">{file.name}</span>
                 <span className="text-xs text-stone-400">{(file.size / 1024).toFixed(0)} KB</span>
               </div>

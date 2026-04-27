@@ -243,7 +243,7 @@ export function AppointmentDetail({ appointment, onClose }: AppointmentDetailPro
                 <div key={String(note.id)} className="bg-stone-50 rounded-xl p-3 border border-stone-100 mb-2 last:mb-0">
                   {note.diagnosis != null && <p className="text-sm font-medium text-stone-900">Dx: {String(note.diagnosis)}</p>}
                   {note.chiefComplaint != null && <p className="text-xs text-stone-500 mt-1">CC: {String(note.chiefComplaint)}</p>}
-                  {note.treatmentPlan != null && <p className="text-xs text-teal-600 mt-1">Plan: {String(note.treatmentPlan)}</p>}
+                  {note.treatmentPlan != null && <p className="text-xs text-blue-600 mt-1">Plan: {String(note.treatmentPlan)}</p>}
                 </div>
               ))}
             </div>

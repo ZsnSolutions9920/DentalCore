@@ -43,7 +43,7 @@ export function NotesTab({ patientId }: { patientId: string }) {
                   {note.isSigned ? (
                     <Lock className="w-4 h-4 text-emerald-600" />
                   ) : (
-                    <FileText className="w-4 h-4 text-teal-600" />
+                    <FileText className="w-4 h-4 text-blue-600" />
                   )}
                   <h3 className="text-sm font-semibold text-stone-900">
                     {note.chiefComplaint}

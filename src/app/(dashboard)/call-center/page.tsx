@@ -26,7 +26,7 @@ import { LoadingSpinner } from "@/components/ui/loading";
 import { NewLeadModal } from "@/components/call-center/new-lead-modal";
 
 const statusConfig: Record<string, { label: string; variant: "primary" | "info" | "success" | "warning" | "danger" | "default" | "purple"; color: string }> = {
-  [LeadStatus.NEW]: { label: "New", variant: "primary", color: "border-l-teal-500" },
+  [LeadStatus.NEW]: { label: "New", variant: "primary", color: "border-l-blue-500" },
   [LeadStatus.CONTACTED]: { label: "Contacted", variant: "info", color: "border-l-sky-500" },
   [LeadStatus.INTERESTED]: { label: "Interested", variant: "warning", color: "border-l-amber-500" },
   [LeadStatus.BOOKED]: { label: "Booked", variant: "success", color: "border-l-emerald-500" },
@@ -108,8 +108,8 @@ export default function CallCenterPage() {
       {/* Large Phone Search */}
       <Card padding="lg">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center">
-            <Phone className="w-7 h-7 text-teal-600" />
+          <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center">
+            <Phone className="w-7 h-7 text-blue-600" />
           </div>
           <p className="text-lg font-semibold text-stone-700">Quick Patient Lookup</p>
           <div className="flex w-full max-w-lg mx-auto gap-2">
@@ -121,7 +121,7 @@ export default function CallCenterPage() {
                 onChange={(e) => setPhoneSearch(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handlePhoneSearch()}
                 placeholder="Search by phone number or name..."
-                className="w-full pl-12 pr-4 py-3.5 text-base bg-white border border-stone-200 rounded-2xl text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all"
+                className="w-full pl-12 pr-4 py-3.5 text-base bg-white border border-stone-200 rounded-2xl text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
               />
             </div>
             <Button size="lg" onClick={handlePhoneSearch}>Search</Button>

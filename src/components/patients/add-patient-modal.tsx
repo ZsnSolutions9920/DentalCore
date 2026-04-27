@@ -149,7 +149,7 @@ export function AddPatientModal({ isOpen, onClose }: AddPatientModalProps) {
           {/* Name */}
           <div className="space-y-1">
             <div className="flex items-center gap-2 mb-2">
-              <User className="w-4 h-4 text-teal-500" />
+              <User className="w-4 h-4 text-blue-500" />
               <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Name</span>
             </div>
             <div className="grid grid-cols-2 gap-3">
@@ -175,7 +175,7 @@ export function AddPatientModal({ isOpen, onClose }: AddPatientModalProps) {
                   className={cn(
                     "flex-1 py-2.5 rounded-xl border-2 text-sm font-medium transition-all cursor-pointer",
                     form.gender === g.value
-                      ? "border-teal-500 bg-teal-50 text-teal-700"
+                      ? "border-blue-500 bg-blue-50 text-blue-700"
                       : "border-stone-200 bg-white text-stone-500 hover:border-stone-300"
                   )}
                 >
@@ -197,9 +197,9 @@ export function AddPatientModal({ isOpen, onClose }: AddPatientModalProps) {
                 <Input type="date" value={form.dateOfBirth} onChange={set("dateOfBirth")} />
               </div>
               {age !== null && (
-                <div className="shrink-0 px-4 py-2.5 bg-teal-50 border border-teal-200 rounded-xl text-center">
-                  <span className="text-lg font-bold text-teal-700">{age}</span>
-                  <span className="text-xs text-teal-500 ml-1">years</span>
+                <div className="shrink-0 px-4 py-2.5 bg-blue-50 border border-blue-200 rounded-xl text-center">
+                  <span className="text-lg font-bold text-blue-700">{age}</span>
+                  <span className="text-xs text-blue-500 ml-1">years</span>
                 </div>
               )}
             </div>

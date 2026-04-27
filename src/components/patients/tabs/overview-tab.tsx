@@ -71,7 +71,7 @@ export function OverviewTab({ patient }: { patient: Patient }) {
         <Card padding="md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-teal-600" />
+              <Calendar className="w-4 h-4 text-blue-600" />
               <h3 className="text-sm font-semibold text-stone-900">Recent Appointment</h3>
             </div>
           </CardHeader>
@@ -152,7 +152,7 @@ export function OverviewTab({ patient }: { patient: Patient }) {
       <Card padding="md">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <Activity className="w-4 h-4 text-teal-600" />
+            <Activity className="w-4 h-4 text-blue-600" />
             <h3 className="text-sm font-semibold text-stone-900">Recent Activity</h3>
           </div>
         </CardHeader>

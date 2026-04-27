@@ -236,7 +236,7 @@ export default function ConsultationPage() {
             </div>
           ) : (
             <>
-              <Avatar name={`${selected.firstName} ${selected.lastName}`} size="md" className="ring-2 ring-teal-200 shrink-0" />
+              <Avatar name={`${selected.firstName} ${selected.lastName}`} size="md" className="ring-2 ring-blue-200 shrink-0" />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-sm font-bold text-stone-900 truncate">{selected.firstName} {selected.lastName}</span>
@@ -251,7 +251,7 @@ export default function ConsultationPage() {
                 </div>
               </div>
               <div className="flex items-center gap-1 shrink-0">
-                <a href={`tel:${selected.phone}`} className="w-8 h-8 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center"><Phone className="w-3.5 h-3.5" /></a>
+                <a href={`tel:${selected.phone}`} className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center"><Phone className="w-3.5 h-3.5" /></a>
                 <a href={`https://wa.me/${selected.phone.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener noreferrer"
                   className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center"><MessageSquare className="w-3.5 h-3.5" /></a>
                 <button onClick={() => { setPatientId(""); setAppointmentId(""); }} className="w-8 h-8 rounded-lg bg-stone-100 text-stone-400 flex items-center justify-center cursor-pointer text-xs font-bold">x</button>
@@ -300,7 +300,7 @@ export default function ConsultationPage() {
               <Card>
                 <CardContent className="p-3">
                   <div className="flex items-center gap-2.5 mb-2">
-                    <Avatar name={`${selected.firstName} ${selected.lastName}`} size="md" className="ring-2 ring-teal-100" />
+                    <Avatar name={`${selected.firstName} ${selected.lastName}`} size="md" className="ring-2 ring-blue-100" />
                     <div className="min-w-0">
                       <p className="text-sm font-bold text-stone-900 truncate">{selected.firstName} {selected.lastName}</p>
                       <p className="text-[10px] text-stone-400">{selected.patientCode} &middot; {selected.age}y / {genderShort(selected.gender)}</p>
@@ -328,7 +328,7 @@ export default function ConsultationPage() {
               {/* Vitals */}
               {vitals && (
                 <Card>
-                  <CardHeader><div className="flex items-center gap-1.5"><Activity className="w-3.5 h-3.5 text-teal-500" /><span className="text-xs font-semibold">Latest Vitals</span></div></CardHeader>
+                  <CardHeader><div className="flex items-center gap-1.5"><Activity className="w-3.5 h-3.5 text-blue-500" /><span className="text-xs font-semibold">Latest Vitals</span></div></CardHeader>
                   <CardContent className="p-3 pt-0 grid grid-cols-2 gap-1.5">
                     {vitals.systolicBP && vitals.diastolicBP && <VitalChip label="BP" value={`${vitals.systolicBP}/${vitals.diastolicBP}`} />}
                     {vitals.heartRate && <VitalChip label="HR" value={`${vitals.heartRate}`} />}
@@ -378,7 +378,7 @@ export default function ConsultationPage() {
 
               {/* Quick Profile Link */}
               <button onClick={() => router.push(`/patients/${patientId}`)}
-                className="w-full text-[11px] text-teal-600 font-medium hover:text-teal-700 hover:underline cursor-pointer py-1 text-center">
+                className="w-full text-[11px] text-blue-600 font-medium hover:text-blue-700 hover:underline cursor-pointer py-1 text-center">
                 View Full Profile &rarr;
               </button>
             </div>
@@ -395,9 +395,9 @@ export default function ConsultationPage() {
                 return (
                   <div key={s} className="flex items-center gap-1">
                     <span className={cn("w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold",
-                      filled ? "bg-teal-500 text-white" : "bg-stone-200 text-stone-500"
+                      filled ? "bg-blue-500 text-white" : "bg-stone-200 text-stone-500"
                     )}>{i + 1}</span>
-                    <span className={filled ? "text-teal-700" : "text-stone-400"}>{s}</span>
+                    <span className={filled ? "text-blue-700" : "text-stone-400"}>{s}</span>
                     {i < 6 && <span className="text-stone-300 mx-0.5">—</span>}
                   </div>
                 );
@@ -428,7 +428,7 @@ export default function ConsultationPage() {
                   {["Tooth pain", "Sensitivity", "Bleeding gums", "Broken tooth", "Swelling", "Checkup", "Whitening", "Cavity / filling", "Follow-up review"].map((c) => (
                     <button key={c} onClick={() => setComplaint(c)}
                       className={cn("px-2 py-0.5 rounded-md text-[10px] font-medium cursor-pointer transition-all border",
-                        complaint === c ? "border-teal-300 bg-teal-50 text-teal-700" : "border-stone-200 text-stone-400 hover:border-stone-300 hover:text-stone-600"
+                        complaint === c ? "border-blue-300 bg-blue-50 text-blue-700" : "border-stone-200 text-stone-400 hover:border-stone-300 hover:text-stone-600"
                       )}>{c}</button>
                   ))}
                 </div>
@@ -604,7 +604,7 @@ export default function ConsultationPage() {
                   <div className="flex gap-1 flex-wrap">
                     {[{ l: "1 wk", d: 7 }, { l: "2 wk", d: 14 }, { l: "1 mo", d: 30 }, { l: "3 mo", d: 90 }].map((p) => (
                       <button key={p.l} onClick={() => { const d = new Date(); d.setDate(d.getDate() + p.d); setFollowUpDate(toClinicDay(d)); }}
-                        className="px-2 py-1 text-[10px] rounded-md border border-stone-200 text-stone-500 hover:border-teal-300 hover:text-teal-600 cursor-pointer transition-all">{p.l}</button>
+                        className="px-2 py-1 text-[10px] rounded-md border border-stone-200 text-stone-500 hover:border-blue-300 hover:text-blue-600 cursor-pointer transition-all">{p.l}</button>
                     ))}
                   </div>
                 </CardContent>
@@ -615,7 +615,7 @@ export default function ConsultationPage() {
           {/* ===== RIGHT — Action Rail ===== */}
           <div className="lg:col-span-3 space-y-3">
             {/* Visit Summary */}
-            <Card className="bg-gradient-to-br from-stone-50 to-teal-50/30">
+            <Card className="bg-gradient-to-br from-stone-50 to-blue-50/30">
               <CardContent className="p-4">
                 <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2.5">Visit Summary</p>
                 <div className="space-y-1.5 text-xs">
@@ -644,7 +644,7 @@ export default function ConsultationPage() {
             <Card>
               <CardContent className="p-2 space-y-0.5">
                 {[
-                  { label: "Record Vitals", icon: <Activity className="w-3.5 h-3.5 text-teal-500" />, href: `/vitals?patientId=${patientId}` },
+                  { label: "Record Vitals", icon: <Activity className="w-3.5 h-3.5 text-blue-500" />, href: `/vitals?patientId=${patientId}` },
                   { label: "Add Image", icon: <Camera className="w-3.5 h-3.5 text-pink-500" /> },
                   { label: "Print Rx", icon: <Printer className="w-3.5 h-3.5 text-stone-500" /> },
                   { label: "Attach Document", icon: <FileText className="w-3.5 h-3.5 text-blue-500" /> },

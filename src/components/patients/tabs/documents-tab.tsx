@@ -149,7 +149,7 @@ export function DocumentsTab({ patientId }: { patientId: string }) {
             <label className="block text-sm font-medium text-stone-700 mb-1">Document Name</label>
             <input
               type="text"
-              className="w-full rounded-lg border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full rounded-lg border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="e.g. Blood Test Results"
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
@@ -158,7 +158,7 @@ export function DocumentsTab({ patientId }: { patientId: string }) {
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">Type</label>
             <select
-              className="w-full rounded-lg border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full rounded-lg border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={form.type}
               onChange={(e) => setForm((f) => ({ ...f, type: e.target.value }))}
             >
@@ -179,7 +179,7 @@ export function DocumentsTab({ patientId }: { patientId: string }) {
                   if (!form.name) setForm((f) => ({ ...f, name: file.name.replace(/\.[^.]+$/, "") }));
                 }
               }}
-              className="w-full text-sm text-stone-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-medium file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 file:cursor-pointer cursor-pointer"
+              className="w-full text-sm text-stone-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer cursor-pointer"
             />
             {selectedFile && (
               <p className="text-xs text-stone-400 mt-1">{selectedFile.name} — {(selectedFile.size / 1024).toFixed(1)} KB</p>
@@ -188,7 +188,7 @@ export function DocumentsTab({ patientId }: { patientId: string }) {
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">Notes (optional)</label>
             <textarea
-              className="w-full rounded-lg border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[80px]"
+              className="w-full rounded-lg border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[80px]"
               placeholder="Any additional notes..."
               value={form.notes}
               onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
@@ -201,7 +201,7 @@ export function DocumentsTab({ patientId }: { patientId: string }) {
       <Card padding="md">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <FileText className="w-4 h-4 text-teal-600" />
+            <FileText className="w-4 h-4 text-blue-600" />
             <h3 className="text-sm font-semibold text-stone-900">
               Documents ({documents.length})
             </h3>

@@ -60,7 +60,7 @@ export function BillingTab({ patientId }: { patientId: string }) {
       <Card padding="md">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <Receipt className="w-4 h-4 text-teal-600" />
+            <Receipt className="w-4 h-4 text-blue-600" />
             <h3 className="text-sm font-semibold text-stone-900">Invoices ({invoices.length})</h3>
           </div>
         </CardHeader>
@@ -98,7 +98,7 @@ export function BillingTab({ patientId }: { patientId: string }) {
                         <div className="flex items-center gap-1.5">
                           {canPay(inv) && (
                             <Button size="sm" variant="ghost" onClick={() => setPayInvoice(inv)} title="Collect Payment">
-                              <CreditCard className="w-3.5 h-3.5 text-teal-600" />
+                              <CreditCard className="w-3.5 h-3.5 text-blue-600" />
                             </Button>
                           )}
                         </div>

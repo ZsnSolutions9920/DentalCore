@@ -118,7 +118,7 @@ export default function PatientPortal() {
       <div className="bg-white border-b border-stone-100 px-4 py-4">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Avatar name={name} size="md" className="ring-2 ring-teal-200" />
+            <Avatar name={name} size="md" className="ring-2 ring-blue-200" />
             <div>
               <h1 className="text-base font-bold text-stone-900">{name}</h1>
               <p className="text-xs text-stone-400">{String(patient.patientCode)} &middot; {String(patient.phone)}</p>
@@ -134,7 +134,7 @@ export default function PatientPortal() {
           {tabs.map((t) => (
             <button key={t.value} onClick={() => setActiveTab(t.value)}
               className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium whitespace-nowrap cursor-pointer transition-all ${
-                activeTab === t.value ? "bg-teal-50 text-teal-700 border border-teal-200" : "bg-white text-stone-500 border border-stone-200"
+                activeTab === t.value ? "bg-blue-50 text-blue-700 border border-blue-200" : "bg-white text-stone-500 border border-stone-200"
               }`}>
               {t.icon} {t.label} <span className="text-[10px] opacity-60">({t.count})</span>
             </button>

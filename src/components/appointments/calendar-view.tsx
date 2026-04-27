@@ -138,7 +138,7 @@ export function CalendarView({ onSelectAppointment }: CalendarViewProps) {
             onClick={() => setDoctorFilter("all")}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
               doctorFilter === "all"
-                ? "bg-teal-600 text-white"
+                ? "bg-blue-600 text-white"
                 : "bg-stone-50 text-stone-500 hover:text-stone-900"
             }`}
           >
@@ -150,7 +150,7 @@ export function CalendarView({ onSelectAppointment }: CalendarViewProps) {
               onClick={() => setDoctorFilter(d.id)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
                 doctorFilter === d.id
-                  ? "bg-teal-600 text-white"
+                  ? "bg-blue-600 text-white"
                   : "bg-stone-50 text-stone-500 hover:text-stone-900"
               }`}
             >
@@ -177,7 +177,7 @@ export function CalendarView({ onSelectAppointment }: CalendarViewProps) {
               </p>
               <p
                 className={`text-lg font-bold mt-0.5 ${
-                  isToday(d) ? "text-teal-600" : "text-stone-900"
+                  isToday(d) ? "text-blue-600" : "text-stone-900"
                 }`}
               >
                 {d.getDate()}

@@ -34,8 +34,8 @@ export default function UserSettingsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center">
-            <Settings className="w-5 h-5 text-teal-600" />
+          <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+            <Settings className="w-5 h-5 text-blue-600" />
           </div>
           <div>
             <h1 className="text-xl sm:text-2xl font-semibold text-stone-900">Settings</h1>
@@ -55,7 +55,7 @@ export default function UserSettingsPage() {
               onClick={() => setActiveTab(tab.value)}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all cursor-pointer ${
                 activeTab === tab.value
-                  ? "bg-teal-600 text-white shadow-sm"
+                  ? "bg-blue-600 text-white shadow-sm"
                   : "bg-stone-100 text-stone-600 hover:bg-stone-200"
               }`}
             >
@@ -137,7 +137,7 @@ export default function UserSettingsPage() {
               <p className="text-sm font-medium text-stone-500 mb-3">Theme</p>
               <div className="flex gap-3">
                 {[
-                  { label: "Light", active: true, bg: "bg-white border-teal-500" },
+                  { label: "Light", active: true, bg: "bg-white border-blue-500" },
                   { label: "Dark", active: false, bg: "bg-stone-800 border-stone-300" },
                   { label: "System", active: false, bg: "bg-gradient-to-r from-white to-stone-800 border-stone-300" },
                 ].map((theme) => (
@@ -147,10 +147,10 @@ export default function UserSettingsPage() {
                   >
                     <div
                       className={`w-16 h-12 rounded-xl border-2 ${theme.bg} ${
-                        theme.active ? "ring-2 ring-teal-500/20" : ""
+                        theme.active ? "ring-2 ring-blue-500/20" : ""
                       }`}
                     />
-                    <span className={`text-xs font-medium ${theme.active ? "text-teal-600" : "text-stone-500"}`}>
+                    <span className={`text-xs font-medium ${theme.active ? "text-blue-600" : "text-stone-500"}`}>
                       {theme.label}
                     </span>
                   </button>

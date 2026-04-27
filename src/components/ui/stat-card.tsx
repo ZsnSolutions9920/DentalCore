@@ -16,7 +16,7 @@ interface StatCardProps {
 }
 
 const iconBgColors = {
-  primary: "bg-teal-50 text-teal-600",
+  primary: "bg-blue-50 text-blue-600",
   success: "bg-emerald-50 text-emerald-600",
   warning: "bg-amber-50 text-amber-600",
   danger: "bg-red-50 text-red-600",

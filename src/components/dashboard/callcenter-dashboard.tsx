@@ -121,17 +121,17 @@ export function CallCenterDashboard() {
 
           {/* Live Call Widget */}
           {liveCall && (
-            <Card className={cn("border-2 animate-fade-in", liveCall.state === "ringing" ? "border-green-400 bg-green-50/30" : "border-teal-300 bg-teal-50/20")}>
+            <Card className={cn("border-2 animate-fade-in", liveCall.state === "ringing" ? "border-green-400 bg-green-50/30" : "border-blue-300 bg-blue-50/20")}>
               <CardContent className="p-5">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className={cn("w-3 h-3 rounded-full", liveCall.state === "ringing" ? "bg-green-500 animate-pulse" : "bg-teal-500")} />
+                  <div className={cn("w-3 h-3 rounded-full", liveCall.state === "ringing" ? "bg-green-500 animate-pulse" : "bg-blue-500")} />
                   <span className="text-sm font-semibold">{liveCall.state === "ringing" ? "Incoming Call" : "Active Call"}</span>
                   <Badge variant={matchType === "patient" ? "success" : matchType === "lead" ? "info" : "warning"} className="text-[10px]">
                     {matchType === "patient" ? "Patient" : matchType === "lead" ? "Lead" : "New Caller"}
                   </Badge>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-teal-100 flex items-center justify-center"><PhoneIncoming className="w-7 h-7 text-teal-600" /></div>
+                  <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center"><PhoneIncoming className="w-7 h-7 text-blue-600" /></div>
                   <div className="flex-1">
                     <p className="text-lg font-bold text-stone-900">{mp ? `${mp.firstName} ${mp.lastName}` : ml ? String(ml.name) : liveCall.phone}</p>
                     <p className="text-sm text-stone-500">{liveCall.phone}</p>
@@ -183,7 +183,7 @@ export function CallCenterDashboard() {
 
           {/* Recent Calls */}
           <Card>
-            <CardHeader><div className="flex items-center gap-2"><PhoneCall className="w-4 h-4 text-teal-500" /><span className="text-sm font-semibold">Recent Calls</span></div></CardHeader>
+            <CardHeader><div className="flex items-center gap-2"><PhoneCall className="w-4 h-4 text-blue-500" /><span className="text-sm font-semibold">Recent Calls</span></div></CardHeader>
             <CardContent className="p-0">
               {recentCalls.length === 0 ? <div className="py-6 text-center text-sm text-stone-400">No recent calls</div> :
                 recentCalls.map((call, i) => {
@@ -192,7 +192,7 @@ export function CallCenterDashboard() {
                   const name = p ? `${p.firstName} ${p.lastName}` : l ? String(l.name) : "Unknown";
                   return (
                     <div key={String(call.id)} className={cn("flex items-center gap-3 px-4 py-3", i < recentCalls.length - 1 && "border-b border-stone-50")}>
-                      <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center", call.outcome === "NO_ANSWER" ? "bg-stone-100 text-stone-400" : "bg-teal-50 text-teal-500")}>
+                      <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center", call.outcome === "NO_ANSWER" ? "bg-stone-100 text-stone-400" : "bg-blue-50 text-blue-500")}>
                         {call.outcome === "NO_ANSWER" ? <PhoneMissed className="w-4 h-4" /> : <PhoneCall className="w-4 h-4" />}
                       </div>
                       <div className="flex-1 min-w-0"><p className="text-sm font-medium truncate">{name}</p><p className="text-xs text-stone-400">{call.createdAt ? formatDate(String(call.createdAt)) : ""}</p></div>
@@ -220,14 +220,6 @@ export function CallCenterDashboard() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader><div className="flex items-center gap-2"><TrendingUp className="w-4 h-4 text-teal-500" /><span className="text-sm font-semibold">Activity</span></div></CardHeader>
-            <CardContent className="p-3 pt-0">
-              {activities.length > 0 ? <div className="space-y-2">{activities.slice(0, 6).map((a) => (
-                <div key={a.id} className="flex items-start gap-2 text-xs text-stone-500 py-1"><span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 shrink-0" /><span>{a.message}</span></div>
-              ))}</div> : <div className="py-4 text-center text-xs text-stone-400">No activity</div>}
-            </CardContent>
-          </Card>
         </div>
       </div>
 

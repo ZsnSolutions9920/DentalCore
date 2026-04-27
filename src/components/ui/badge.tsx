@@ -16,7 +16,7 @@ const variantStyles = {
   danger: "bg-red-50 text-red-700 ring-red-600/10",
   info: "bg-sky-50 text-sky-700 ring-sky-600/10",
   default: "bg-stone-100 text-stone-600 ring-stone-500/10",
-  primary: "bg-teal-50 text-teal-700 ring-teal-600/10",
+  primary: "bg-blue-50 text-blue-700 ring-blue-600/10",
   purple: "bg-indigo-50 text-indigo-700 ring-indigo-600/10",
 };
 
@@ -26,7 +26,7 @@ const dotColors = {
   danger: "bg-red-500",
   info: "bg-sky-500",
   default: "bg-stone-400",
-  primary: "bg-teal-500",
+  primary: "bg-blue-500",
   purple: "bg-indigo-500",
 };
 

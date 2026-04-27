@@ -102,8 +102,8 @@ export default function RolesPage() {
       {/* Header */}
       <div>
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center">
-            <Shield className="w-5 h-5 text-teal-600" />
+          <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+            <Shield className="w-5 h-5 text-blue-600" />
           </div>
           <div>
             <h1 className="text-xl sm:text-2xl font-semibold text-stone-900">Roles & Permissions</h1>
@@ -129,7 +129,7 @@ export default function RolesPage() {
             onClick={() => setActiveRole(role.value)}
             className={`px-4 py-2 text-sm font-medium rounded-full transition-all cursor-pointer ${
               activeRole === role.value
-                ? "bg-teal-600 text-white shadow-sm"
+                ? "bg-blue-600 text-white shadow-sm"
                 : "bg-stone-100 text-stone-600 hover:bg-stone-200"
             }`}
           >

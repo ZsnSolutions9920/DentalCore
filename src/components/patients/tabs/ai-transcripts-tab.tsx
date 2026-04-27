@@ -45,7 +45,7 @@ export function AITranscriptsTab({ patientId }: { patientId: string }) {
                 onClick={() => toggleExpand(t.id)}
               >
                 <div className="flex items-center gap-2">
-                  <Bot className="w-4 h-4 text-teal-600" />
+                  <Bot className="w-4 h-4 text-blue-600" />
                   <h3 className="text-sm font-semibold text-stone-900">
                     Consultation Transcript
                   </h3>
@@ -74,8 +74,8 @@ export function AITranscriptsTab({ patientId }: { patientId: string }) {
                 <div className="space-y-4">
                   {/* Summary */}
                   {t.summary && (
-                    <div className="p-3 rounded-lg bg-teal-50 border border-teal-500/10">
-                      <p className="text-xs font-semibold text-teal-600 uppercase mb-1">
+                    <div className="p-3 rounded-lg bg-blue-50 border border-blue-500/10">
+                      <p className="text-xs font-semibold text-blue-600 uppercase mb-1">
                         AI Summary
                       </p>
                       <p className="text-sm">{t.summary}</p>

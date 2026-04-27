@@ -111,8 +111,8 @@ export default function BranchesPage() {
                 {/* Header */}
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center">
-                      <Building2 className="w-5 h-5 text-teal-600" />
+                    <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+                      <Building2 className="w-5 h-5 text-blue-600" />
                     </div>
                     <div>
                       <p className="font-semibold text-stone-800 truncate min-w-0">{branch.name}</p>

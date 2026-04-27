@@ -257,7 +257,7 @@ function SummarizeTab() {
       {note && (
         <Card className="bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden animate-fade-in">
           {/* Gradient accent bar */}
-          <div className="h-1.5 bg-gradient-to-r from-teal-400 via-indigo-400 to-indigo-500" />
+          <div className="h-1.5 bg-gradient-to-r from-blue-400 via-indigo-400 to-indigo-500" />
           <CardHeader>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center">
@@ -359,7 +359,7 @@ function SmartSearchTab() {
     <div className="space-y-6 max-w-3xl">
       {/* Large search input */}
       <Card className="bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden">
-        <div className="h-1 bg-gradient-to-r from-indigo-400 to-teal-400" />
+        <div className="h-1 bg-gradient-to-r from-indigo-400 to-blue-400" />
         <CardContent className="p-6">
           <div className="flex gap-3">
             <div className="flex-1">

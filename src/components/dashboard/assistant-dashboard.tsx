@@ -44,10 +44,10 @@ export function AssistantDashboard() {
   return (
     <div className="space-y-4 sm:space-y-6 animate-fade-in" data-id="DASH-ASSISTANT">
       {/* Welcome Card */}
-      <div className="bg-gradient-to-r from-teal-600 to-teal-500 rounded-2xl p-4 sm:p-6 text-white shadow-sm">
-        <p className="text-teal-100 text-sm">Clinical Assistant</p>
+      <div className="bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-4 sm:p-6 text-white shadow-sm">
+        <p className="text-blue-100 text-sm">Clinical Assistant</p>
         <h1 className="text-lg sm:text-xl font-semibold">{greeting}, {user?.name || "there"}</h1>
-        <p className="text-teal-100 mt-1 text-sm">{todayLabel} &mdash; Here are your tasks for today.</p>
+        <p className="text-blue-100 mt-1 text-sm">{todayLabel} &mdash; Here are your tasks for today.</p>
       </div>
 
       {/* Error banner */}
@@ -94,7 +94,7 @@ export function AssistantDashboard() {
                     {isWaiting ? (
                       <Button
                         size="sm"
-                        className="bg-teal-600 hover:bg-teal-700 text-white rounded-xl px-4 font-medium"
+                        className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-4 font-medium"
                       >
                         <Thermometer className="w-3.5 h-3.5 mr-1.5" />
                         Start
@@ -121,17 +121,6 @@ export function AssistantDashboard() {
                     <p className="text-sm font-medium text-stone-900 truncate">{entry.patientName}</p>
                     <p className="text-xs text-stone-500">{entry.doctorName} &middot; {entry.stage.toLowerCase()}</p>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
-          {activities.length > 0 && (
-            <div className="space-y-2">
-              <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Live Activity</p>
-              {activities.slice(0, 5).map((act) => (
-                <div key={act.id} className="flex items-start gap-2 text-sm text-stone-600 py-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 shrink-0" />
-                  <span>{act.message}</span>
                 </div>
               ))}
             </div>

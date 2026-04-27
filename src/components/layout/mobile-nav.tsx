@@ -66,7 +66,7 @@ export function MobileNav() {
             <Link key={item.href} href={item.href}
               className={cn(
                 "flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl min-w-[56px] transition-all",
-                isActive ? "text-teal-600" : "text-stone-400"
+                isActive ? "text-blue-600" : "text-stone-400"
               )}>
               {item.icon}
               <span className="text-[10px] font-medium">{item.label}</span>

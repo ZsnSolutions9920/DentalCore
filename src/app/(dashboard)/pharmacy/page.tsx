@@ -53,7 +53,7 @@ export default function PharmacyPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-        <StatBox label="Total Products" value={stats.total || 0} icon={<Package className="w-5 h-5" />} color="text-teal-600" bg="bg-teal-50" />
+        <StatBox label="Total Products" value={stats.total || 0} icon={<Package className="w-5 h-5" />} color="text-blue-600" bg="bg-blue-50" />
         <StatBox label="Low Stock" value={stats.lowStock || 0} icon={<TrendingDown className="w-5 h-5" />} color="text-amber-600" bg="bg-amber-50" />
         <StatBox label="Out of Stock" value={stats.outOfStock || 0} icon={<AlertTriangle className="w-5 h-5" />} color="text-red-600" bg="bg-red-50" />
         <StatBox label="Stock Value" value={formatCurrency(stats.totalValue || 0)} icon={<Pill className="w-5 h-5" />} color="text-violet-600" bg="bg-violet-50" />

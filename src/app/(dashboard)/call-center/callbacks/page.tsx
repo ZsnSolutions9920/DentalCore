@@ -56,8 +56,8 @@ export default function CallbacksPage() {
     <div className="space-y-4 sm:space-y-6 animate-fade-in" data-id="CALL-CALLBACK">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center">
-          <PhoneForwarded className="w-5 h-5 text-teal-600" />
+        <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+          <PhoneForwarded className="w-5 h-5 text-blue-600" />
         </div>
         <div>
           <h1 className="text-xl sm:text-2xl font-semibold text-stone-900">Callbacks</h1>
@@ -89,7 +89,7 @@ export default function CallbacksPage() {
                   ? "border-l-red-400"
                   : isToday
                   ? "border-l-amber-400"
-                  : "border-l-teal-400"
+                  : "border-l-blue-400"
               }`}
             >
               <div className="flex flex-col gap-4">

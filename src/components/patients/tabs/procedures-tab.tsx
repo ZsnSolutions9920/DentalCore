@@ -32,7 +32,7 @@ export function ProceduresTab({ patientId }: { patientId: string }) {
       <Card padding="md">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <Syringe className="w-4 h-4 text-teal-600" />
+            <Syringe className="w-4 h-4 text-blue-600" />
             <h3 className="text-sm font-semibold text-stone-900">
               Procedure History ({procedures.length})
             </h3>

@@ -98,7 +98,7 @@ export default function PatientsPage() {
       {/* ===== KPI CARDS ===== */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
         {[
-          { label: "Total Patients", value: totalPatients, icon: <Users className="w-5 h-5" />, color: "text-teal-600", bg: "bg-teal-50", sub: "all records" },
+          { label: "Total Patients", value: totalPatients, icon: <Users className="w-5 h-5" />, color: "text-blue-600", bg: "bg-blue-50", sub: "all records" },
           { label: "New This Month", value: newThisMonth, icon: <UserPlus className="w-5 h-5" />, color: "text-emerald-600", bg: "bg-emerald-50", sub: "registered recently" },
           { label: "Active", value: activeCount, icon: <UserCheck className="w-5 h-5" />, color: "text-blue-600", bg: "bg-blue-50", sub: "current patients" },
           { label: "Follow-Up Due", value: 0, icon: <CalendarClock className="w-5 h-5" />, color: "text-amber-600", bg: "bg-amber-50", sub: "need attention" },
@@ -198,7 +198,7 @@ export default function PatientsPage() {
                   className={cn(
                     "w-full flex items-center gap-3 px-4 py-3 text-left transition-all cursor-pointer group",
                     i < patients.length - 1 && "border-b border-stone-50",
-                    selectedPatient?.id === p.id ? "bg-teal-50/40 border-l-2 border-l-teal-500" : "hover:bg-stone-50",
+                    selectedPatient?.id === p.id ? "bg-blue-50/40 border-l-2 border-l-blue-500" : "hover:bg-stone-50",
                   )}>
                   <Avatar name={`${p.firstName} ${p.lastName}`} size="md" className="shrink-0" />
                   <div className="flex-1 min-w-0">
@@ -231,8 +231,8 @@ export default function PatientsPage() {
               {patients.map((p) => (
                 <button key={p.id} onClick={() => setSelectedPatient(p)}
                   className={cn(
-                    "bg-white rounded-xl border border-stone-100 p-4 text-left transition-all cursor-pointer hover:shadow-md hover:border-teal-200 group",
-                    selectedPatient?.id === p.id && "ring-2 ring-teal-400 border-teal-300"
+                    "bg-white rounded-xl border border-stone-100 p-4 text-left transition-all cursor-pointer hover:shadow-md hover:border-blue-200 group",
+                    selectedPatient?.id === p.id && "ring-2 ring-blue-400 border-blue-300"
                   )}>
                   <div className="flex items-center gap-3 mb-3">
                     <Avatar name={`${p.firstName} ${p.lastName}`} size="md" />
@@ -275,7 +275,7 @@ export default function PatientsPage() {
                     <button key={p} onClick={() => setPage(p)}
                       className={cn(
                         "w-8 h-8 rounded-lg text-xs font-medium cursor-pointer transition-all",
-                        page === p ? "bg-teal-500 text-white" : "text-stone-500 hover:bg-stone-100"
+                        page === p ? "bg-blue-500 text-white" : "text-stone-500 hover:bg-stone-100"
                       )}>{p}</button>
                   );
                 })}
@@ -300,13 +300,13 @@ export default function PatientsPage() {
 
               {/* Identity */}
               <div className="px-5 pb-4 text-center -mt-2">
-                <Avatar name={`${selectedPatient.firstName} ${selectedPatient.lastName}`} size="xl" className="mx-auto ring-4 ring-teal-100 w-16 h-16" />
+                <Avatar name={`${selectedPatient.firstName} ${selectedPatient.lastName}`} size="xl" className="mx-auto ring-4 ring-blue-100 w-16 h-16" />
                 <h3 className="text-lg font-bold text-stone-900 mt-3">{selectedPatient.firstName} {selectedPatient.lastName}</h3>
                 <p className="text-xs text-stone-400 mt-0.5">{selectedPatient.patientCode} &middot; {selectedPatient.age}y / {genderShort(selectedPatient.gender)}</p>
 
                 {/* Contact pills */}
                 <div className="flex items-center justify-center gap-2 mt-3">
-                  <a href={`tel:${selectedPatient.phone}`} className="flex items-center gap-1.5 px-3 py-1.5 bg-teal-50 text-teal-700 rounded-full text-xs font-medium hover:bg-teal-100 transition-colors">
+                  <a href={`tel:${selectedPatient.phone}`} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full text-xs font-medium hover:bg-blue-100 transition-colors">
                     <Phone className="w-3 h-3" /> Call
                   </a>
                   <a href={`https://wa.me/${selectedPatient.phone.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener noreferrer"
@@ -359,7 +359,7 @@ export default function PatientsPage() {
                 {selectedPatient.nextAppointment && (
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-stone-400">Next Appointment</span>
-                    <span className="text-teal-600 font-medium">{formatDate(selectedPatient.nextAppointment)}</span>
+                    <span className="text-blue-600 font-medium">{formatDate(selectedPatient.nextAppointment)}</span>
                   </div>
                 )}
                 <div className="flex items-center justify-between text-xs">

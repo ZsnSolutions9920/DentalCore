@@ -14,7 +14,7 @@ import { useAuth } from "@/lib/auth-context";
 
 import { getClinicToday, CLINIC_TZ } from "@/lib/utils";
 const quickActions = [
-  { label: "Register Patient", icon: <UserPlus className="w-6 h-6" />, href: "/patients", bg: "bg-teal-50", text: "text-teal-600" },
+  { label: "Register Patient", icon: <UserPlus className="w-6 h-6" />, href: "/patients", bg: "bg-blue-50", text: "text-blue-600" },
   { label: "Book Appointment", icon: <Calendar className="w-6 h-6" />, href: "/appointments", bg: "bg-emerald-50", text: "text-emerald-600" },
   { label: "Check In", icon: <UserCheck className="w-6 h-6" />, href: "/appointments/check-in", bg: "bg-amber-50", text: "text-amber-600" },
   { label: "Room View", icon: <DoorOpen className="w-6 h-6" />, href: "/rooms", bg: "bg-sky-50", text: "text-sky-600" },
@@ -58,10 +58,10 @@ export function ReceptionistDashboard() {
   return (
     <div className="space-y-4 sm:space-y-6 animate-fade-in" data-id="DASH-RECEPTION">
       {/* Welcome Card */}
-      <div className="bg-gradient-to-r from-teal-600 to-teal-500 rounded-2xl p-4 sm:p-6 text-white shadow-sm">
-        <p className="text-teal-100 text-sm">Front Desk</p>
+      <div className="bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-4 sm:p-6 text-white shadow-sm">
+        <p className="text-blue-100 text-sm">Front Desk</p>
         <h1 className="text-lg sm:text-xl font-semibold">{greeting}, {user?.name || "there"}</h1>
-        <p className="text-teal-100 mt-1 text-sm">{todayLabel} &mdash; Here&apos;s your check-in overview.</p>
+        <p className="text-blue-100 mt-1 text-sm">{todayLabel} &mdash; Here&apos;s your check-in overview.</p>
       </div>
 
       {/* Error banner */}
@@ -83,7 +83,7 @@ export function ReceptionistDashboard() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-base sm:text-lg font-semibold text-stone-900">Check-In Queue</h2>
-          <Link href="/appointments/check-in" className="text-sm text-teal-600 font-medium hover:text-teal-700 transition-colors">
+          <Link href="/appointments/check-in" className="text-sm text-blue-600 font-medium hover:text-blue-700 transition-colors">
             View All
           </Link>
         </div>
@@ -112,7 +112,7 @@ export function ReceptionistDashboard() {
                     <Button
                       size="sm"
                       data-id="APPT-CHECKIN-CONFIRM"
-                      className="bg-teal-600 hover:bg-teal-700 text-white rounded-xl px-5 font-medium"
+                      className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-5 font-medium"
                     >
                       CHECK IN
                     </Button>
@@ -144,19 +144,6 @@ export function ReceptionistDashboard() {
         </div>
       )}
 
-      {/* Live Activity */}
-      {activities.length > 0 && (
-        <div className="space-y-2">
-          <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Live Activity</p>
-          {activities.slice(0, 5).map((act) => (
-            <div key={act.id} className="flex items-start gap-2 text-sm text-stone-600 py-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 shrink-0" />
-              <span>{act.message}</span>
-            </div>
-          ))}
-        </div>
-      )}
-
       {/* Quick Actions */}
       <div className="space-y-4">
         <h2 className="text-base sm:text-lg font-semibold text-stone-900">Quick Actions</h2>
@@ -165,7 +152,7 @@ export function ReceptionistDashboard() {
             <Link
               key={action.label}
               href={action.href}
-              className="bg-white rounded-2xl border border-stone-100 shadow-sm p-4 sm:p-5 flex flex-col items-center gap-3 hover:shadow-md hover:border-teal-200 transition-all group"
+              className="bg-white rounded-2xl border border-stone-100 shadow-sm p-4 sm:p-5 flex flex-col items-center gap-3 hover:shadow-md hover:border-blue-200 transition-all group"
             >
               <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${action.bg} ${action.text} group-hover:scale-105 transition-transform`}>
                 {action.icon}
