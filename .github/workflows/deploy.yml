@@ -1,0 +1,55 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: SSH deploy to VPS
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script_stop: true
+          command_timeout: 15m
+          script: |
+            set -euo pipefail
+
+            APP_DIR="/var/www/DentalCore"
+            PM2_NAME="dentacore"
+
+            echo ">>> Deploying to $APP_DIR (pm2: $PM2_NAME)"
+            cd "$APP_DIR"
+
+            echo ">>> git pull"
+            git fetch --all --prune
+            git reset --hard origin/main
+
+            echo ">>> npm ci"
+            npm ci --legacy-peer-deps
+
+            echo ">>> prisma generate + migrate deploy"
+            npx prisma generate
+            npx prisma migrate deploy
+
+            echo ">>> next build"
+            npm run build
+
+            echo ">>> pm2 reload (zero-downtime)"
+            pm2 reload "$PM2_NAME" --update-env
+            pm2 save
+
+            echo ">>> done"
