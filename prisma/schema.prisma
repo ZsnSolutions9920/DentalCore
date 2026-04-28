@@ -126,6 +126,31 @@ model Patient {
   callLogs       CallLog[]          @relation("PatientCallLogs")
   toothRecords   ToothRecord[]
   orthoCases     OrthoCase[]
+  beforeAfterImages BeforeAfterImage[]
+}
+
+model BeforeAfterImage {
+  id              String   @id @default(cuid())
+  patientId       String
+  patient         Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  beforeUrl       String
+  afterUrl        String?
+
+  title           String?
+  description     String?
+  toothFdi        Int?
+  procedure       String?
+
+  takenAt         DateTime @default(now())
+  uploadedById    String?
+  uploadedByName  String?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([patientId])
+  @@index([takenAt])
 }
 
 model OrthoCase {

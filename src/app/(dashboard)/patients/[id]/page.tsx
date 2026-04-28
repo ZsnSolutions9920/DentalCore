@@ -166,7 +166,7 @@ export default function PatientProfilePage({ params }: { params: Promise<{ id: s
     <div data-id="PATIENT-PROFILE" className="max-w-6xl mx-auto">
 
       {/* ===== STICKY HEADER ===== */}
-      <div className="sticky top-16 z-10 bg-[#FAFAF9] -mx-5 px-5 sm:-mx-8 sm:px-8 lg:-mx-10 lg:px-10 xl:-mx-12 xl:px-12 pb-3 pt-1 border-b border-stone-100/80">
+      <div className="sticky top-16 z-10 bg-[#FAFAF9] -mx-4 px-4 sm:-mx-5 sm:px-5 lg:-mx-6 lg:px-6 pb-3 pt-1 border-b border-stone-100/80">
         {/* Back */}
         <button onClick={() => router.push("/patients")} className="flex items-center gap-1 text-xs text-stone-400 hover:text-stone-600 mb-2 cursor-pointer">
           <ArrowLeft className="w-3.5 h-3.5" /> Patients
